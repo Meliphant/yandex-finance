@@ -1,4 +1,4 @@
-package ya.co.yandex_finance
+package ya.co.yandex_finance.component.fragment.balance
 
 import com.arellomobile.mvp.MvpView
 

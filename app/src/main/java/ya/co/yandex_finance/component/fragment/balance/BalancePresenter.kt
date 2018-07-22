@@ -1,4 +1,4 @@
-package ya.co.yandex_finance
+package ya.co.yandex_finance.component.fragment.balance
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
@@ -10,7 +10,7 @@ class BalancePresenter: MvpPresenter<BalanceView>() {
         //todo: call repository return Money model
         //balanceRepository.getBalance(balance -> viewState.setBalance(balance))
         //todo: convertToUsd and make viewState.setBalance(arrayOfCurrencies) ?
-        viewState.setBalance(40001)
+        viewState.setBalance(400001)
     }
 
     //todo: Money and map?
