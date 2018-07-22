@@ -1,13 +1,15 @@
 package ya.co.yandex_finance.component
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.view.Menu
 import com.arellomobile.mvp.MvpAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.component.fragment.AboutFragment
-import ya.co.yandex_finance.component.fragment.SettingsFragment
 import ya.co.yandex_finance.component.fragment.balance.BalanceFragment
+import android.view.MenuItem
+
 
 class MainActivity: MvpAppCompatActivity() {
     
@@ -21,15 +23,9 @@ class MainActivity: MvpAppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                supportFragmentManager.beginTransaction()
-                        .replace(R.id.fl_main, AboutFragment())
-                        .commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                supportFragmentManager.beginTransaction()
-                        .replace(R.id.fl_main, SettingsFragment())
-                        .commit()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -48,4 +44,28 @@ class MainActivity: MvpAppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
+
+    /**working with menu */
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        when (item.getItemId()) {
+            R.id.action_settings -> {
+                startSettings()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun startSettings() {
+        startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+    }
+
+
 }
