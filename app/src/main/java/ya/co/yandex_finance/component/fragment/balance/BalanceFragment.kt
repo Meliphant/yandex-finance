@@ -1,8 +1,6 @@
 package ya.co.yandex_finance.component.fragment.balance
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import ya.co.yandex_finance.R
@@ -24,7 +22,6 @@ class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemS
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        balancePresenter.updateBalance()
         //todo: arrayOf myMoney && do it all in the presenter
 //        val currencyNames = arrayOf("rub", "usd")
 //        val adapter = ArrayAdapter<String>(activity!!.applicationContext, android.R.layout.simple_spinner_item, currencyNames)
@@ -37,7 +34,7 @@ class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemS
 
 
     override fun setBalance(balance: Double) {
-        current_balance_amount.text = balance.toString()
+        current_balance_amount.text = String.format("%.2f", balance)
     }
 
 

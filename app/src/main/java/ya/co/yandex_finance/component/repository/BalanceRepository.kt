@@ -1,6 +1,6 @@
 package ya.co.yandex_finance.component.repository
 
-class BalanceModel {
+class BalanceRepository {
 
     fun getMainCurrency() {
 
