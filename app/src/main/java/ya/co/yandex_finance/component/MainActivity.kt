@@ -30,7 +30,6 @@ class MainActivity: MvpAppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
         when (item.getItemId()) {
             R.id.action_settings -> {
                 startSettings()
