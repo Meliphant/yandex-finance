@@ -18,5 +18,10 @@
     <string name="usd_balance_sign">$</string>
     <string name="rub_balance_sign">₽</string>
 
+    <string-array name="currencies">
+        <item>usd</item>
+        <item>rub</item>
+    </string-array>
+
 
 </resources>

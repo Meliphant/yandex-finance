@@ -6,15 +6,14 @@ import com.arellomobile.mvp.MvpPresenter
 @InjectViewState
 class BalancePresenter: MvpPresenter<BalanceView>() {
 
-    fun updateBalance() {
-        //todo: call repository return Money model
-        //balanceRepository.getBalance(balance -> viewState.setBalance(balance))
-        //todo: convertToUsd and make viewState.setBalance(arrayOfCurrencies) ?
-        viewState.setBalance(400001)
-    }
+    //todo: get them myMoney array from repository
+    private val balanceInUsd: Double = 228.02
+    private val usdToRub = 60
 
-    //todo: Money and map?
-    fun convertTo(mainCurrAmount: Int, rate: Int): Int {
-        return mainCurrAmount * rate
+    fun convertCurrencyTo(currencyName: String) {
+        if(currencyName == "USD_CURR_NAME")
+            viewState.setBalance(balanceInUsd)
+        if (currencyName == "RUB_CURR_NAME")
+            viewState.setBalance(balanceInUsd * usdToRub)
     }
 }
