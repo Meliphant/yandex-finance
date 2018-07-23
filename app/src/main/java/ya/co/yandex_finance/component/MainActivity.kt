@@ -12,7 +12,7 @@ import android.view.MenuItem
 
 
 class MainActivity: MvpAppCompatActivity() {
-    
+
     //todo: to all of this in the PRESENTER -- use Cicerone?
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

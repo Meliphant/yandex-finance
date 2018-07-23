@@ -10,11 +10,14 @@ class BalancePresenter: MvpPresenter<BalanceView>() {
         //todo: call repository return Money model
         //balanceRepository.getBalance(balance -> viewState.setBalance(balance))
         //todo: convertToUsd and make viewState.setBalance(arrayOfCurrencies) ?
-        viewState.setBalance(400001)
+        viewState.setBalance(400001.0)
     }
 
     //todo: Money and map?
-    fun convertTo(mainCurrAmount: Int, rate: Int): Int {
-        return mainCurrAmount * rate
+    fun convertCurrencyTo(currencyName: String) {
+        if(currencyName == "USD_CURR_NAME")
+            viewState.setBalance(228.0)
+        if (currencyName == "RUB_CURR_NAME")
+            viewState.setBalance(40003.1)
     }
 }
