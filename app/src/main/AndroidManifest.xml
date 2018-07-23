@@ -30,8 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".component.SettingsActivity"></activity>
+        <activity
+            android:name=".component.SettingsActivity"
+            android:label="@string/settings_activity_title" />
     </application>
 
 </manifest>
