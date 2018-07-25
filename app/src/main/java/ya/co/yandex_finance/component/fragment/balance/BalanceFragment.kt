@@ -9,16 +9,26 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_balance.*
+import ya.co.yandex_finance.component.di.component
+import javax.inject.Inject
 
 
 class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemSelectedListener {
 
+    @Inject
     @InjectPresenter
     lateinit var balancePresenter: BalancePresenter
+    @ProvidePresenter fun provideBalancePresenter() = balancePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_balance, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        activity!!.component.inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +38,6 @@ class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemS
         val adapter = ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, currencyNames)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         current_currency_spinner.adapter = adapter
-        current_currency_spinner.prompt = "Валюта"
         current_currency_spinner.onItemSelectedListener = this
         current_currency_spinner.setSelection(1)
     }
@@ -42,7 +51,6 @@ class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemS
     override fun onNothingSelected(patent: AdapterView<*>) { }
 
     override fun onItemSelected(patent: AdapterView<*>, view: View?, pos: Int, id: Long) {
-        //current_currency_spinner.setSelection(pos)
         chooseCurrency(if (pos == 0) "USD_CURR_NAME" else "RUB_CURR_NAME")
     }
 
