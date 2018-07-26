@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import ya.co.yandex_finance.R
@@ -22,7 +23,6 @@ class SettingsActivity : AppCompatActivity() {
                     .show()
         }
 
-        this.title = "Настройки"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
@@ -38,6 +38,6 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun backHome() {
         //todo: use Cicerone
-        this.finish()
+        onBackPressed()
     }
 }

@@ -42,5 +42,8 @@ dependencies {
     kapt "com.arello-mobile:moxy-compiler:$moxyVer"
     implementation "com.android.support:appcompat-v7:$sdkVer"
 
-
+    def  daggerVer = "2.12"
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
+    implementation "com.google.dagger:dagger:$daggerVer"
+//    dagger-android & dagger-android support
 }

@@ -1,20 +1,17 @@
 <resources>
-    <string name="app_name">yandex-finance</string>
+    <string name="app_name">fintracker</string>
 
     <!--balance screen-->
-    <string name="text_current_balance">Текущий баланс:</string>
-
-    <string name="title_balance_rub">Баланс в рублях:</string>
-    <string name="title_balance_usd">Баланс в долларах:</string>
+    <string name="text_current_balance">Current balance:</string>
 
     <!--about screen-->
-    <string name="nav_about">О приложении</string>
-    <string name="about_text">Приложение для управления финансами <b><i>Яндекс.Финансы</i></b>.
+    <string name="about_app">About app</string>
+    <string name="about_text">The app for managing your finances <b><i>Fintracker</i></b>.
         \n\nУправляйте и следите за своим денежным потоком во всех валютах</string>
 
 
     <!--settings screen-->
-    <string name="nav_settings">Настройки</string>
+    <string name="settings_activity_title">Settings</string>
     <string name="usd_balance_sign">$</string>
     <string name="rub_balance_sign">₽</string>
 

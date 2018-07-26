@@ -6,17 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".component.SettingsActivity">
 
-
-
-    <TextView
-        android:id="@+id/text_about_app"
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="О приложении"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimaryDark"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="262dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="196dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_error_outline_black_24dp" />
+
+        <TextView
+            android:id="@+id/text_about_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_app"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="95dp"
+            tools:layout_editor_absoluteY="262dp" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
 </android.support.constraint.ConstraintLayout>

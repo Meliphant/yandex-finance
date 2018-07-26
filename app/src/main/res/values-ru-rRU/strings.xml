@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">финансы</string>
+
+    <!--balance screen-->
+    <string name="text_current_balance">Текущий баланс:</string>
+
+    <!--about screen-->
+    <string name="about_app">О приложении</string>
+    <string name="about_text">Приложение для управления финансами <b><i>Яндекс.Финансы</i></b>.
+        \n\nУправляйте и следите за своим денежным потоком во всех валютах</string>
+
+
+    <!--settings screen-->
+    <string name="settings_activity_title">Настройки</string>
+    <string name="usd_balance_sign">$</string>
+    <string name="rub_balance_sign">₽</string>
+
+    <string-array name="currencies">
+        <item>руб</item>
+        <item>долл</item>
+    </string-array>
+
+
+</resources>
