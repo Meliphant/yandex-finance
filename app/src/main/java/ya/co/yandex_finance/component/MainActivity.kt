@@ -7,6 +7,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.component.fragment.balance.BalanceFragment
 import android.view.MenuItem
+import ya.co.yandex_finance.component.fragment.transactions.TransactionsFragment
 
 
 class MainActivity: MvpAppCompatActivity() {
@@ -17,9 +18,12 @@ class MainActivity: MvpAppCompatActivity() {
 
         //by default showing balance
         //todo: to all of this in the PRESENTER -- use Cicerone?
+//        supportFragmentManager.beginTransaction()
+//                .replace(R.id.fl_main, BalanceFragment())
+//                .commitAllowingStateLoss()
         supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_main, BalanceFragment())
-                .commit()
+                .replace(R.id.fl_main, TransactionsFragment())
+                .commitAllowingStateLoss()
     }
 
     /**working with menu */

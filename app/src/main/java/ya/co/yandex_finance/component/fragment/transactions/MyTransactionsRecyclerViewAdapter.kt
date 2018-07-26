@@ -11,7 +11,7 @@ import ya.co.yandex_finance.R
 import ya.co.yandex_finance.component.fragment.transactions.TransactionsFragment.OnListFragmentInteractionListener
 import ya.co.yandex_finance.component.fragment.transactions.dummy.DummyContent.DummyItem
 
-import kotlinx.android.synthetic.main.fragment_transactions.view.*
+import kotlinx.android.synthetic.main.item_transaction.view.*
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -36,13 +36,13 @@ class MyTransactionsRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_transactions, parent, false)
+                .inflate(R.layout.item_transaction, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
+//        holder.mIdView.text = item.id
         holder.mContentView.text = item.content
 
         with(holder.mView) {
@@ -54,8 +54,8 @@ class MyTransactionsRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+//        val mIdView: TextView = mView.transaction_datetime
+        val mContentView: TextView = mView.tr_name
 
         override fun toString(): String {
             return super.toString() + " '" + mContentView.text + "'"
