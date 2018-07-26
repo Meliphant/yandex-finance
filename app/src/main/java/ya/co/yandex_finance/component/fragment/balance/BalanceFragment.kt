@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_balance.*
-import ya.co.yandex_finance.component.di.component
+import ya.co.yandex_finance.di.component
 import javax.inject.Inject
 
 

@@ -1,9 +1,9 @@
-package ya.co.yandex_finance.component.di
+package ya.co.yandex_finance.di
 
 import android.app.Application
-import ya.co.yandex_finance.component.di.component.DaggerAppComponent
-import ya.co.yandex_finance.component.di.component.AppComponent
-import ya.co.yandex_finance.component.di.module.AppModule
+import ya.co.yandex_finance.di.component.DaggerAppComponent
+import ya.co.yandex_finance.di.component.AppComponent
+import ya.co.yandex_finance.di.module.AppModule
 
 class App : Application() {
 
