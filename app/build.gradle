@@ -47,4 +47,8 @@ dependencies {
     def daggerVer = "2.12"
     kapt "com.google.dagger:dagger-compiler:$daggerVer"
     implementation "com.google.dagger:dagger:$daggerVer"
+
+    def glideVer = "4.7.1"
+    implementation "com.github.bumptech.glide:glide:$glideVer"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVer"
 }

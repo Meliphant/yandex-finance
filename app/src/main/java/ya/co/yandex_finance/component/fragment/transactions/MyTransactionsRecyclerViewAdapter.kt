@@ -1,25 +1,26 @@
 package ya.co.yandex_finance.component.fragment.transactions
 
+import android.content.Context
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import ya.co.yandex_finance.R
 
 
 import ya.co.yandex_finance.component.fragment.transactions.TransactionsFragment.OnListFragmentInteractionListener
-import ya.co.yandex_finance.component.fragment.transactions.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.item_transaction.view.*
+import ya.co.yandex_finance.repository.model.Transaction
+import ya.co.yandex_finance.repository.model.utils.TransactionType
+import java.text.SimpleDateFormat
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyTransactionsRecyclerViewAdapter(
-        private val mValues: List<DummyItem>,
+        private val mValues: List<Transaction>,
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<MyTransactionsRecyclerViewAdapter.ViewHolder>() {
 
@@ -27,9 +28,7 @@ class MyTransactionsRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
+            val item = v.tag as Transaction
             mListener?.onListFragmentInteraction(item)
         }
     }
@@ -42,23 +41,41 @@ class MyTransactionsRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-//        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.trName.text = item.name
+        holder.trDateTime.text = SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(item.dateTime)
 
-        with(holder.mView) {
-            tag = item
-            setOnClickListener(mOnClickListener)
+        Glide.with(holder.mView.context)
+                .load(getImage(holder.mView.context, item.category.iconUrl))
+                .into(holder.trCategoryImg)
+
+        if (item.type == TransactionType.INCOME) {
+            holder.trAmount.text = "+ ${item.amount.toString()} ${item.wallet.currency.sign}"
+            holder.trAmount.setTextColor(Color.GREEN)
         }
+        if (item.type == TransactionType.OUTCOME) {
+            holder.trAmount.text = "- ${item.amount.toString()} ${item.wallet.currency.sign}"
+            holder.trAmount.setTextColor(Color.RED)
+        }
+
+        Glide.with(holder.mView.context)
+                .load(getImage(holder.mView.context, item.wallet.walletType.iconUrl))
+                .into(holder.trWalletImg)
+
+        holder.trWalletName.text = item.wallet.name
+    }
+
+    fun getImage(cntxt: Context, imageName: String): Int {
+        return cntxt.resources.getIdentifier(imageName, "drawable", cntxt.packageName)
     }
 
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-//        val mIdView: TextView = mView.transaction_datetime
-        val mContentView: TextView = mView.tr_name
-
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
-        }
+        val trDateTime: TextView = mView.tr_datetime
+        val trName: TextView = mView.tr_name
+        val trCategoryImg: ImageView = mView.tr_category_img
+        val trWalletImg: ImageView = mView.wallet_img
+        val trWalletName: TextView = mView.wallet_name
+        val trAmount: TextView = mView.tr_amount
     }
 }
