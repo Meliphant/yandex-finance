@@ -42,11 +42,9 @@ class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemS
         current_currency_spinner.setSelection(1)
     }
 
-
     override fun setBalance(balance: Double) {
         current_balance_amount.text = String.format("%.2f", balance)
     }
-
 
     override fun onNothingSelected(patent: AdapterView<*>) { }
 

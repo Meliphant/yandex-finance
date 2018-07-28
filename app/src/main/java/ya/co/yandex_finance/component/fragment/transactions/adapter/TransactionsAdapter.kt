@@ -1,4 +1,4 @@
-package ya.co.yandex_finance.component.fragment.transactions
+package ya.co.yandex_finance.component.fragment.transactions.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -19,10 +19,10 @@ import ya.co.yandex_finance.repository.model.Transaction
 import ya.co.yandex_finance.repository.model.utils.TransactionType
 import java.text.SimpleDateFormat
 
-class MyTransactionsRecyclerViewAdapter(
+class TransactionsAdapter(
         private val mValues: List<Transaction>,
         private val mListener: OnListFragmentInteractionListener?)
-    : RecyclerView.Adapter<MyTransactionsRecyclerViewAdapter.ViewHolder>() {
+    : RecyclerView.Adapter<TransactionsAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
@@ -64,7 +64,7 @@ class MyTransactionsRecyclerViewAdapter(
         holder.trWalletName.text = item.wallet.name
     }
 
-    fun getImage(cntxt: Context, imageName: String): Int {
+    private fun getImage(cntxt: Context, imageName: String): Int {
         return cntxt.resources.getIdentifier(imageName, "drawable", cntxt.packageName)
     }
 

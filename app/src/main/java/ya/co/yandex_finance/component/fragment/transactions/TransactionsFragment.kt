@@ -9,6 +9,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_transactions_list.*
 import ya.co.yandex_finance.R
+import ya.co.yandex_finance.component.fragment.transactions.adapter.TransactionsAdapter
 
 import ya.co.yandex_finance.repository.model.Transaction
 
@@ -18,7 +19,7 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
     lateinit var presenter: TransactionsPresenter
 
     override fun showTransactionsList(tr: List<Transaction>) {
-        list.adapter = MyTransactionsRecyclerViewAdapter(tr, listener)
+        list.adapter = TransactionsAdapter(tr, listener)
     }
 
     private var listener: OnListFragmentInteractionListener? = object : OnListFragmentInteractionListener{
