@@ -3,7 +3,7 @@
     package="ya.co.yandex_finance">
 
     <application
-        android:name=".component.di.App"
+        android:name="ya.co.yandex_finance.di.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_balance.*
-import ya.co.yandex_finance.component.di.component
+import ya.co.yandex_finance.di.component
 import javax.inject.Inject
 
 
@@ -42,11 +42,9 @@ class BalanceFragment : MvpAppCompatFragment(), BalanceView, AdapterView.OnItemS
         current_currency_spinner.setSelection(1)
     }
 
-
     override fun setBalance(balance: Double) {
         current_balance_amount.text = String.format("%.2f", balance)
     }
-
 
     override fun onNothingSelected(patent: AdapterView<*>) { }
 

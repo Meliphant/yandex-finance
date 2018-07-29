@@ -15,10 +15,8 @@
     <string name="usd_balance_sign">$</string>
     <string name="rub_balance_sign">₽</string>
 
-    <string-array name="currencies">
-        <item>руб</item>
-        <item>долл</item>
-    </string-array>
+    <!--transactions screen-->
+    <string name="transaction_item_description">категория</string>
 
 
 </resources>

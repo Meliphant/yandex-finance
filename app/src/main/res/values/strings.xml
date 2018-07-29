@@ -15,10 +15,11 @@
     <string name="usd_balance_sign">$</string>
     <string name="rub_balance_sign">₽</string>
 
-    <string-array name="currencies">
-        <item>usd</item>
-        <item>rub</item>
-    </string-array>
+    <!--transactions screen-->
+    <string name="transaction_item_description">img</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
