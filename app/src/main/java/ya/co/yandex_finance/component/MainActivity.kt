@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import com.arellomobile.mvp.MvpAppCompatActivity
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.component.fragment.balance.BalanceFragment
 import android.view.MenuItem
-import ya.co.yandex_finance.component.fragment.transactions.TransactionsFragment
 import ya.co.yandex_finance.component.fragment.wallets.WalletsFragment
 
 
@@ -20,10 +18,6 @@ class MainActivity: MvpAppCompatActivity() {
         //todo: to all of this in the PRESENTER -- use Cicerone?
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_wallets, WalletsFragment())
-                .commitAllowingStateLoss()
-
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_main, TransactionsFragment())
                 .commitAllowingStateLoss()
     }
 

@@ -18,14 +18,16 @@
             android:layout_height="wrap_content"
             android:text="19.09.1996  15:03" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/tr_category_img"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/transaction_item_description"
-            app:srcCompat="@drawable/category_restaurants" />
+            app:srcCompat="@drawable/category_restaurants"
+            app:civ_border_color="@color/cardview_dark_background"
+            app:civ_border_width="2dp"/>
 
         <TextView
             android:id="@+id/tr_name"

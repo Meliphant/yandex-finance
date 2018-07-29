@@ -7,12 +7,17 @@ import ya.co.yandex_finance.repository.model.utils.MyCurrency
 import ya.co.yandex_finance.repository.model.utils.TransactionType
 import ya.co.yandex_finance.repository.model.utils.WalletTypes
 import java.util.*
+import kotlin.collections.ArrayList
 
 class TransactionsRepository {
 
-    private val wallet1 = Wallet("myRubWallet", MyCurrency.RUB, WalletTypes.CASH)
-    private val wallet2 = Wallet("myUsdWallet", MyCurrency.USD, WalletTypes.CARD)
-    val transactions = mutableListOf<Transaction>()
+    private val wallet1 = Wallet(0, "myRubWallet", MyCurrency.RUB, WalletTypes.CASH)
+    private val wallet2 = Wallet(1, "myUsdWallet", MyCurrency.USD, WalletTypes.CARD)
+    val transactions = arrayListOf<Transaction>()
+
+    fun getTransactions(walletId: Int): ArrayList<Transaction> {
+        return ArrayList(transactions.filter { it.wallet.id ==  walletId })
+    }
 
     init {
         for (i in 1..15)

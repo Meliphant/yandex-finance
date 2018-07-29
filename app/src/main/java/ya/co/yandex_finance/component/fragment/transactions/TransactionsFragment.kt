@@ -9,6 +9,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_transactions_list.*
 import ya.co.yandex_finance.R
+import ya.co.yandex_finance.Util
 import ya.co.yandex_finance.component.fragment.transactions.adapter.TransactionsAdapter
 
 import ya.co.yandex_finance.repository.model.Transaction
@@ -18,7 +19,9 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
     @InjectPresenter
     lateinit var presenter: TransactionsPresenter
 
-    override fun showTransactionsList(tr: List<Transaction>) {
+    private var walletId = 0
+
+    override fun showTransactionsList(tr: ArrayList<Transaction>) {
         list.adapter = TransactionsAdapter(tr, listener)
     }
 
@@ -35,7 +38,12 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.loadTransactions()
+
+        arguments?.let {
+            walletId = it.getInt(Util.KEY_WALLET_ID.name)
+        }
+
+        presenter.loadTransactions(walletId)
     }
 
     override fun onDetach() {
@@ -45,5 +53,12 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
 
     interface OnListFragmentInteractionListener {
         fun onListFragmentInteraction(item: Transaction?)
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(walletId: Int): TransactionsFragment =  TransactionsFragment().apply {
+            arguments = Bundle().apply { putInt(Util.KEY_WALLET_ID.name, walletId) }
+        }
     }
 }

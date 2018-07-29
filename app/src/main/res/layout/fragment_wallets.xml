@@ -3,15 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".component.fragment.wallets.WalletsFragment"
-    android:background="#b95895ec">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".component.fragment.wallets.WalletsFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/wallets_recycler"
+    <com.nshmura.recyclertablayout.RecyclerTabLayout
+        android:id="@+id/recycler_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="110dp"
+        android:background="@color/colorPrimaryDark"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        tools:listitem="@layout/item_wallet"/>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_marginTop="110dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

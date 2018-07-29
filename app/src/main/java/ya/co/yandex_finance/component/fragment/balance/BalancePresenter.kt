@@ -8,8 +8,6 @@ import ya.co.yandex_finance.repository.BalanceRepository
 class BalancePresenter
 (private val balanceRepository: BalanceRepository) : MvpPresenter<BalanceView>() {
 
-    init { }
-
     //todo: get them myMoney array from repository
     private val usdToRub = 60
 
