@@ -34,6 +34,12 @@ class MainActivity: MvpAppCompatActivity() {
                 startSettings()
                 return true
             }
+            android.R.id.home -> { //todo: working ugly because of viewHolder
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.fl_wallets, WalletsFragment())
+                            .commitAllowingStateLoss()
+                    return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -42,5 +48,8 @@ class MainActivity: MvpAppCompatActivity() {
         startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
     }
 
+    fun showUpButton() { supportActionBar!!.setDisplayHomeAsUpEnabled(true) }
+
+    fun hideUpButton() { supportActionBar!!.setDisplayHomeAsUpEnabled(false) }
 
 }

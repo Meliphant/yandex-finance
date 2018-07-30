@@ -17,6 +17,11 @@
 
     <!--transactions screen-->
     <string name="transaction_item_description">категория</string>
+    <string name="new_expense">Новый расход</string>
+    <string name="new_income">Новый доход</string>
 
+    <!--add transaction screen-->
+    <string name="add_transaction_goal">Введите описание</string>
+    <string name="add_transaction_btn">Добавить транзакцию</string>
 
 </resources>

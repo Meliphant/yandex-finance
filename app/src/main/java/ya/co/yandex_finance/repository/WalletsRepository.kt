@@ -15,7 +15,7 @@ class WalletsRepository {
         wallets.add(Wallet(2,"anRubWallet", MyCurrency.RUB, WalletTypes.CASH))
         wallets.add(Wallet(3,"anUsdWallet", MyCurrency.USD, WalletTypes.CARD))
 
-        for (i in 15..30)
+        for (i in 15..20)
             wallets.add(Wallet(i,"wl$i", MyCurrency.USD, WalletTypes.CARD))
     }
 
