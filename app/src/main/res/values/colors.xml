@@ -6,6 +6,11 @@
 
     <color name="mainBackground">#b95895ec</color>
 
+    <!--fab text-->
+    <color name="fab_text_color">#eaffffff</color>
+    <color name="fab_text_background">#d6000000</color>
+
+
     <color name="tab_background_selected">#FF4081</color>
     <color name="tab_background_unselected">#b95895ec</color>
 

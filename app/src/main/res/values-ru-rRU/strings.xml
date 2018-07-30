@@ -17,6 +17,8 @@
 
     <!--transactions screen-->
     <string name="transaction_item_description">категория</string>
+    <string name="new_expense">Новый расход</string>
+    <string name="new_income">Новый доход</string>
 
 
 </resources>

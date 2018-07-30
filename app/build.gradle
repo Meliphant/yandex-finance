@@ -58,4 +58,7 @@ dependencies {
 
     def recyclerTabLayoutVer = "1.5.0"
     implementation "com.nshmura:recyclertablayout:$recyclerTabLayoutVer"
+
+    def fabVer = "1.10.1"
+    implementation "com.getbase:floatingactionbutton:$fabVer"
 }
