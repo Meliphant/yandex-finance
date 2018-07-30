@@ -62,13 +62,18 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
             }
         })
 
-        fab_new_income.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View) {
-                activity!!.supportFragmentManager.beginTransaction()
-                        .replace(R.id.fl_wallets, AddTransactionFragment.newInstance(walletId, TransactionType.INCOME))
-                        .commit()
-            }
-        })
+        //todo: working ugly because of viewHolder
+        fab_new_income.setOnClickListener {
+            activity!!.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fl_wallets, AddTransactionFragment.newInstance(walletId, TransactionType.INCOME))
+                    .commit()
+        }
+
+        fab_new_expense.setOnClickListener {
+            activity!!.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fl_wallets, AddTransactionFragment.newInstance(walletId, TransactionType.OUTCOME))
+                    .commit()
+        }
     }
 
     override fun onDetach() {

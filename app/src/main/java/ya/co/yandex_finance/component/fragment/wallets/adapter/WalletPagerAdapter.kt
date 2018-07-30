@@ -8,7 +8,7 @@ import ya.co.yandex_finance.repository.model.Wallet
 
 class WalletPagerAdapter(private var list: ArrayList<Wallet>, private val fm: FragmentManager): FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
-        return TransactionsFragment.newInstance(position)
+        return TransactionsFragment.newInstance(list[position].id)
     }
 
     override fun getCount(): Int {

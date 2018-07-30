@@ -6,9 +6,12 @@ enum class Categories {
         override val iconUrl = "category_travel"
     },
     RESTAURANTS {
-        //name
         override fun toString(): String = "Restaurant"
         override val iconUrl = "category_restaurants"
+    },
+    GROCERIES {
+        override fun toString(): String = "Groceries"
+        override val iconUrl = "category_groceries"
     };
 
     abstract override fun toString(): String

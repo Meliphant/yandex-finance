@@ -14,6 +14,8 @@ import ya.co.yandex_finance.component.fragment.wallets.adapter.WalletPagerAdapte
 import ya.co.yandex_finance.component.fragment.wallets.adapter.WalletsRecyclerAdapter
 import ya.co.yandex_finance.repository.WalletsRepository
 import ya.co.yandex_finance.repository.model.Wallet
+import ya.co.yandex_finance.repository.model.utils.MyCurrency
+import ya.co.yandex_finance.repository.model.utils.WalletTypes
 
 
 class WalletsFragment : MvpAppCompatFragment(), WalletsView {
@@ -33,6 +35,8 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
     }
 
     override fun showWallets(list: ArrayList<Wallet>) {
+        list.add(0, Wallet(-1, "All wallets", MyCurrency.USD, WalletTypes.CASH))
+        list.add(list.size, Wallet(-2, "Add wallet", MyCurrency.USD, WalletTypes.CASH))
         view_pager.adapter = WalletPagerAdapter(list, activity!!.supportFragmentManager)
         recycler_tab_layout.setUpWithAdapter(WalletsRecyclerAdapter(list, view_pager))
     }
