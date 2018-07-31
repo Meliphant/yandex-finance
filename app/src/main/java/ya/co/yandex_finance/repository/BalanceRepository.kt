@@ -1,4 +1,4 @@
-package ya.co.yandex_finance.component.repository
+package ya.co.yandex_finance.repository
 
 class BalanceRepository {
 

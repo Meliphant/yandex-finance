@@ -1,9 +1,9 @@
-package ya.co.yandex_finance.component.di.component
+package ya.co.yandex_finance.di.component
 
 import dagger.Component
-import ya.co.yandex_finance.component.di.App
-import ya.co.yandex_finance.component.di.module.AppModule
-import ya.co.yandex_finance.component.di.module.MainActivityModule
+import ya.co.yandex_finance.di.App
+import ya.co.yandex_finance.di.module.AppModule
+import ya.co.yandex_finance.di.module.MainActivityModule
 import ya.co.yandex_finance.component.fragment.balance.BalanceFragment
 import ya.co.yandex_finance.component.fragment.balance.BalancePresenter
 import javax.inject.Singleton

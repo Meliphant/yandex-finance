@@ -52,15 +52,6 @@
                 android:textColor="#e8000000"
                 android:textSize="33sp" />
 
-            <!--<TextView-->
-            <!--android:id="@+id/current_balance_sign"-->
-            <!--android:layout_width="58dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:text="@string/rub_balance_sign"-->
-            <!--android:textSize="33sp" />-->
-
             <Spinner
                 android:id="@+id/current_currency_spinner"
                 android:layout_width="wrap_content"

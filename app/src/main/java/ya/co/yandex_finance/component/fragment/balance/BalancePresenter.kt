@@ -2,13 +2,11 @@ package ya.co.yandex_finance.component.fragment.balance
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ya.co.yandex_finance.component.repository.BalanceRepository
+import ya.co.yandex_finance.repository.BalanceRepository
 
 @InjectViewState
 class BalancePresenter
 (private val balanceRepository: BalanceRepository) : MvpPresenter<BalanceView>() {
-
-    init { }
 
     //todo: get them myMoney array from repository
     private val usdToRub = 60
