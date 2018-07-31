@@ -17,7 +17,7 @@ import ya.co.yandex_finance.repository.WalletsRepository
 import ya.co.yandex_finance.repository.model.utils.Categories
 import ya.co.yandex_finance.repository.model.utils.TransactionType
 
-
+//todo: make it as DialogFragment?
 class AddTransactionFragment : Fragment() {
     private var walletId: Int = -1
     private var transactionType: String = TransactionType.INCOME.name

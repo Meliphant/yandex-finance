@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
 <android.support.v7.widget.RecyclerView
-    android:id="@+id/list"
+    android:id="@+id/rv_list_transactions"
     android:name="ya.co.yandex_finance.component.fragment.transactions.TransactionsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,13 +30,13 @@
         fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/cardview_shadow_end_color"
-        app:layout_anchor="@id/list"
+        app:layout_anchor="@id/rv_list_transactions"
         fab:fab_icon="@drawable/fab_add"
-        fab:layout_constraintBottom_toBottomOf="@+id/list"
+        fab:layout_constraintBottom_toBottomOf="@+id/rv_list_transactions"
         fab:layout_constraintEnd_toEndOf="parent"
         fab:layout_constraintHorizontal_bias="0.966"
         fab:layout_constraintStart_toStartOf="parent"
-        fab:layout_constraintTop_toTopOf="@+id/list"
+        fab:layout_constraintTop_toTopOf="@+id/rv_list_transactions"
         fab:layout_constraintVertical_bias="1.0" >
 
         <com.getbase.floatingactionbutton.FloatingActionButton
