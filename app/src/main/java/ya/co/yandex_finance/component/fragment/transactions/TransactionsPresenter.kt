@@ -1,6 +1,5 @@
 package ya.co.yandex_finance.component.fragment.transactions
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import ya.co.yandex_finance.repository.TransactionsRepository

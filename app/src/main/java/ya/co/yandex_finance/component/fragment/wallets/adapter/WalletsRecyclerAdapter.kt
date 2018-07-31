@@ -45,6 +45,8 @@ class WalletsRecyclerAdapter(var list: ArrayList<Wallet>, private val myViewPage
         }
 
         holder.itemView.wallet_cardView.setBackgroundResource(tmpColor)
+
+        //todo: add onclick
     }
 
     private fun getImage(cntxt: Context, imageName: String): Int {
