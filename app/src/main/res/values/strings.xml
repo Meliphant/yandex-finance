@@ -3,6 +3,7 @@
 
     <!--balance screen-->
     <string name="text_current_balance">Current balance:</string>
+    <string name="title_transaction_list">TRANSACTIONS</string>
 
     <!--about screen-->
     <string name="about_title">About</string>

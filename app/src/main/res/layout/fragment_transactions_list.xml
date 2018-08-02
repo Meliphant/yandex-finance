@@ -4,16 +4,28 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <TextView
+        android:id="@+id/tv_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_transaction_list"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list_transactions"
         android:name="ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:context=".ui.fragment.transactions.TransactionsFragment"
-        tools:listitem="@layout/item_transaction">
+        tools:listitem="@layout/item_transaction"
+        app:layout_constraintTop_toBottomOf="@+id/tv_list_title">
 
     </android.support.v7.widget.RecyclerView>
 
