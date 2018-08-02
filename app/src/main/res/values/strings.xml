@@ -5,14 +5,20 @@
     <string name="text_current_balance">Current balance:</string>
 
     <!--about screen-->
-    <string name="about_app">About app</string>
+    <string name="about_title">About</string>
     <string name="about_text">The app for managing your finances <b><i>Fintracker</i></b>.
         \n\nУправляйте и следите за своим денежным потоком во всех валютах</string>
 
     <!--settings screen-->
-    <string name="settings_activity_title">Settings</string>
+    <string name="settings_title">Settings</string>
     <string name="usd_balance_sign" translatable="false">$</string>
     <string name="rub_balance_sign" translatable="false">₽</string>
+    <string name="settings_currency_key">currency</string>
+    <string name="settings_wallets_key">wallets</string>
+    <string name="settings_currency_title">Currency</string>
+    <string name="settings_wallets_title">Wallets</string>
+    <string name="settings_currency_summary">Select one custom currency</string>
+    <string name="settings_wallets_summary">Edit wallet</string>
 
     <!--transactions screen-->
     <string name="transaction_item_description">img</string>

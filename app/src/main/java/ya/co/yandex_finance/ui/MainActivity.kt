@@ -2,6 +2,7 @@ package ya.co.yandex_finance.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -48,6 +49,10 @@ class MainActivity : MvpAppCompatActivity() {
                 startSettings()
                 true
             }
+            R.id.action_about -> {
+                showAboutDialog()
+                true
+            }
             android.R.id.home -> { //todo: working ugly because of viewHolder
                 supportFragmentManager.beginTransaction()
                         .replace(R.id.fl_wallets, WalletsFragment())
@@ -60,6 +65,13 @@ class MainActivity : MvpAppCompatActivity() {
 
     private fun startSettings() {
         startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+    }
+
+    private fun showAboutDialog() {
+        AlertDialog.Builder(this@MainActivity)
+                .setView(R.layout.dialog_about)
+                .create()
+                .show()
     }
 
     //todo remove if use DialogFragment
