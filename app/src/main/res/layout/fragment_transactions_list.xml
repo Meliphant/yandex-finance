@@ -21,7 +21,7 @@
         android:id="@+id/rv_list_transactions"
         android:name="ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:context=".ui.fragment.transactions.TransactionsFragment"
         tools:listitem="@layout/item_transaction"
