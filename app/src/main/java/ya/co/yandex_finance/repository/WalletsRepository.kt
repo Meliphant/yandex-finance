@@ -20,11 +20,9 @@ class WalletsRepository {
     }
 
     //get total money in a wallet
-    //todo Merge two Repositories? Wallet and Transaction
     fun getAmount(walletId: Int): Double {
         return TransactionsRepository().getTransactions(walletId).map { it.amount }.sum()
     }
 
     fun getWalletById(id: Int) = wallets.first { it.id == id }
-
 }

@@ -1,32 +1,52 @@
 package ya.co.yandex_finance.ui.fragment.addtransaction
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import com.arellomobile.mvp.MvpAppCompatDialogFragment
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.dialog_add_transaction.*
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.repository.WalletsRepository
+import ya.co.yandex_finance.app.di.appComponent
+import ya.co.yandex_finance.repository.model.Transaction
+import ya.co.yandex_finance.repository.model.Wallet
 import ya.co.yandex_finance.repository.model.utils.Categories
 import ya.co.yandex_finance.repository.model.utils.TransactionType
 import ya.co.yandex_finance.ui.fragment.FragmentArguments
+import java.util.*
+import javax.inject.Inject
 
-class AddTransactionDialog : DialogFragment() {
+class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
+
+    @Inject
+    @InjectPresenter
+    lateinit var presenter: AddTransactionPresenter
+
+    @ProvidePresenter
+    fun provideAddTransactionPresenter() = presenter
+
     private var walletId: Int = -1
-    private var transactionType: String = TransactionType.INCOME.name
-    val list = WalletsRepository().wallets
+    private lateinit var wallet: Wallet
+    private lateinit var walletList: List<Wallet>
+    private var transactionType = TransactionType.INCOME
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             walletId = it.getInt(FragmentArguments.KEY_WALLET_ID.name)
-            transactionType = it.getString(FragmentArguments.KEY_TRANSACTION_TYPE.name)
+            transactionType = TransactionType
+                    .values()[it.getInt(FragmentArguments.KEY_TRANSACTION_TYPE.name)]
+
         }
+
+        presenter.loadWallets()
         setStyle(DialogFragment.STYLE_NORMAL, R.style.TransactionDialog)
     }
 
@@ -40,17 +60,25 @@ class AddTransactionDialog : DialogFragment() {
         setupViews()
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        appComponent.inject(this)
+    }
+
+    override fun showWallets(list: ArrayList<Wallet>) {
+        walletList = list
+        val walletAdapter = ArrayAdapter<String>(context,
+                android.R.layout.simple_spinner_item,
+                walletList.map { it.name })
+        walletAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner_wallets.adapter = walletAdapter
+        spinner_wallets.setSelection(walletList.indexOf(walletList.find { it.id == walletId }))
+    }
+
     private fun setupViews() {
         button_close.setOnClickListener { dismiss() }
 
-        button_save?.setOnClickListener { saveTransaction() }
-
-        val walletAdapter = ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,
-                list.map { it.name })
-        walletAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_wallets.adapter = walletAdapter
-        spinner_wallets.setSelection(list.indexOf(list.find { it.id == walletId }))
+        button_save?.setOnClickListener { onSaveClicked() }
 
         val categories = Categories.values().map { it.toString() }
         val categoriesAdapter = ArrayAdapter<String>(context,
@@ -60,36 +88,37 @@ class AddTransactionDialog : DialogFragment() {
         spinner_category.setSelection(0)
     }
 
-    private fun saveTransaction() {
-        //todo save transaction
+    private fun onSaveClicked() {
+        val wallet = spinner_wallets.selectedItemPosition
+        presenter.loadWalletById(wallet)
+    }
 
-//        val amount = tr_amount.text.toString().toInt()
-//        val name = name.text.toString()
-//        val category = spinner_category.selectedItemPosition
-//
-//        val intent = Intent()
-//        intent.putExtra(NAME_EXTRA, name)
-//        intent.putExtra(AMOUNT_EXTRA, amount)
-//        intent.putExtra(TRANSACTION_TYPE_EXTRA, transactionType)
-//        intent.putExtra(CATEGORY_TYPE_EXTRA, category)
-//
-//        targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+    override fun showWallet(wallet: Wallet) {
+        this.wallet = wallet
+        saveTransaction()
+    }
+
+    private fun saveTransaction() {
+        val amount = tr_amount.text.toString().toDouble()
+        val name = name.text.toString()
+        val categoryId = spinner_category.selectedItemPosition
+        val category = Categories.values()[categoryId]
+
+        val transaction = Transaction(name, amount, transactionType, category, wallet, Date())
+        presenter.addTransaction(transaction)
+        targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_OK, Intent())
 
         dismiss()
     }
 
     companion object {
         const val TAG = "AddTransactionDialog"
-        const val NAME_EXTRA = "description_extra"
-        const val AMOUNT_EXTRA = "amount_extra"
-        const val TRANSACTION_TYPE_EXTRA = "transaction_type"
-        const val CATEGORY_TYPE_EXTRA = "category_type"
 
         fun newInstance(walletId: Int, transactionType: TransactionType): DialogFragment =
                 AddTransactionDialog().apply {
                     arguments = Bundle().apply {
                         putInt(FragmentArguments.KEY_WALLET_ID.name, walletId)
-                        putString(FragmentArguments.KEY_TRANSACTION_TYPE.name, transactionType.name)
+                        putInt(FragmentArguments.KEY_TRANSACTION_TYPE.name, transactionType.ordinal)
                     }
                 }
     }

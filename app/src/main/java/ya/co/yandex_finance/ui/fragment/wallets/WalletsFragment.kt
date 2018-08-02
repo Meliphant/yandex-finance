@@ -46,12 +46,11 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
     override fun showWallets(list: ArrayList<Wallet>) {
         //todo remove log
         Log.e("WALLETS", "show wallets: $list")
-        list.add(0, Wallet(-1, "All wallets", Currency.USD, WalletTypes.CASH))
-        //todo create button add new wallet and remove this line?
-        //Maybe inside preferences?
-        list.add(list.size, Wallet(-2, "Add wallet", Currency.USD, WalletTypes.CASH))
+        val wallets = ArrayList(list)
+        wallets.add(0, Wallet(-1, "All wallets", Currency.USD, WalletTypes.CASH))
+        wallets.add(list.size, Wallet(-2, "Add wallet", Currency.USD, WalletTypes.CASH))
 
-        rootView.view_pager.adapter = WalletPagerAdapter(list, childFragmentManager)
-        rootView.recycler_tab_layout.setUpWithAdapter(WalletsRecyclerAdapter(list, rootView.view_pager))
+        rootView.view_pager.adapter = WalletPagerAdapter(wallets, childFragmentManager)
+        rootView.recycler_tab_layout.setUpWithAdapter(WalletsRecyclerAdapter(wallets, rootView.view_pager))
     }
 }

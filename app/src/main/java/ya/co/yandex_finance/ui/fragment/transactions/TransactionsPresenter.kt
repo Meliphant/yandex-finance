@@ -10,8 +10,7 @@ import javax.inject.Inject
 
 @InjectViewState
 class TransactionsPresenter
-@Inject constructor(private val transactionsRepository: TransactionsRepository,
-                    private val walletsRepository: WalletsRepository)
+@Inject constructor(private val transactionsRepository: TransactionsRepository)
     : MvpPresenter<TransactionsView>() {
 
     fun loadTransactions(walletId: Int) {
@@ -21,13 +20,5 @@ class TransactionsPresenter
         } else {
             viewState.showTransactionsList(transactionsRepository.transactions)
         }
-    }
-
-    fun addTransaction(transaction: Transaction) {
-        transactionsRepository.addTransaction(transaction)
-    }
-
-    fun getWalletById(id: Int): Wallet {
-        return walletsRepository.getWalletById(id)
     }
 }

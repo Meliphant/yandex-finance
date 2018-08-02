@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.fragment_transactions_list.*
 import kotlinx.android.synthetic.main.fragment_transactions_list.view.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App.Companion.appComponent
@@ -22,7 +20,6 @@ import ya.co.yandex_finance.repository.model.utils.TransactionType
 import ya.co.yandex_finance.ui.fragment.FragmentArguments
 import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
 import ya.co.yandex_finance.ui.fragment.transactions.adapter.TransactionsAdapter
-import ya.co.yandex_finance.ui.fragment.wallets.WalletsPresenter
 import java.util.*
 import javax.inject.Inject
 
@@ -93,37 +90,26 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
 
         rootView.fab_new_income.setOnClickListener {
             val dialog = AddTransactionDialog.newInstance(walletId, TransactionType.INCOME)
-            val ft = activity!!.supportFragmentManager.beginTransaction()
+            val ft = fragmentManager?.beginTransaction()
+            dialog.setTargetFragment(this, DIALOG_REQUEST_CODE)
             dialog.show(ft, AddTransactionDialog.TAG)
-            //todo save transaction
-//            dialog.setTargetFragment(this, DIALOG_REQUEST_CODE);
         }
 
         rootView.fab_new_expense.setOnClickListener {
             val dialog = AddTransactionDialog.newInstance(walletId, TransactionType.OUTCOME)
-            val ft = activity!!.supportFragmentManager.beginTransaction()
+            val ft = fragmentManager?.beginTransaction()
+            dialog.setTargetFragment(this, DIALOG_REQUEST_CODE)
             dialog.show(ft, AddTransactionDialog.TAG)
         }
     }
 
-    //todo save transaction
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == DIALOG_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-//
-//            if (data != null) {
-//                val name = data.getStringExtra(AddTransactionDialog.NAME_EXTRA)
-//                val amount = data.getDoubleExtra(AddTransactionDialog.AMOUNT_EXTRA, 0.0)
-//                val typeInt = data.getIntExtra(AddTransactionDialog.TRANSACTION_TYPE_EXTRA, 0)
-//                val type = TransactionType.values()[typeInt]
-//                val categoryInt = data.getIntExtra(AddTransactionDialog.CATEGORY_TYPE_EXTRA, 0)
-//                val category = Categories.values()[categoryInt]
-//                val wallet = transactionsPresenter.getWalletById(walletId)
-//                val transaction = Transaction(name, amount, type, category, wallet, Date())
-//                transactionsPresenter.addTransaction(transaction)
-//            }
-//        }
-//    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == DIALOG_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            transactionsPresenter.loadTransactions(walletId)
+        }
+    }
+
 
     interface OnListFragmentInteractionListener {
         fun onListFragmentInteraction(item: Transaction?)
