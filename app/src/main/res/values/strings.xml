@@ -7,7 +7,7 @@
     <!--about screen-->
     <string name="about_title">About</string>
     <string name="about_text">The app for managing your finances <b><i>Fintracker</i></b>.
-        \n\nУправляйте и следите за своим денежным потоком во всех валютах</string>
+        \n\nManage and monitor your cash flow in all currencies.</string>
 
     <!--settings screen-->
     <string name="settings_title">Settings</string>

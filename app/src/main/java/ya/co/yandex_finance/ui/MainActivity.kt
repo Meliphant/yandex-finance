@@ -1,10 +1,14 @@
 package ya.co.yandex_finance.ui
 
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.di.appComponent
@@ -70,6 +74,10 @@ class MainActivity : MvpAppCompatActivity() {
     private fun showAboutDialog() {
         AlertDialog.Builder(this@MainActivity)
                 .setView(R.layout.dialog_about)
+                .setTitle(R.string.about_title)
+                .setPositiveButton(android.R.string.ok){dialog, _ ->
+                    dialog.dismiss();
+                }
                 .create()
                 .show()
     }
