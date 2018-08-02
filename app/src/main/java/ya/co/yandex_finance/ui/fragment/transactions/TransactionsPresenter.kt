@@ -2,10 +2,7 @@ package ya.co.yandex_finance.ui.fragment.transactions
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import ya.co.yandex_finance.repository.TransactionsRepository
-import ya.co.yandex_finance.repository.WalletsRepository
-import ya.co.yandex_finance.repository.model.Transaction
-import ya.co.yandex_finance.repository.model.Wallet
+import ya.co.yandex_finance.model.repositories.TransactionsRepository
 import javax.inject.Inject
 
 @InjectViewState

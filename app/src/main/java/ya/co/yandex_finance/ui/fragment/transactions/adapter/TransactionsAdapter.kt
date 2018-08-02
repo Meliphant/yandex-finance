@@ -11,8 +11,8 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_transaction.view.*
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.repository.model.Transaction
-import ya.co.yandex_finance.repository.model.utils.TransactionType
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.TransactionType
 import ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment.OnListFragmentInteractionListener
 import java.text.SimpleDateFormat
 import java.util.*

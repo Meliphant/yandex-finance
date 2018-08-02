@@ -14,9 +14,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_transactions_list.view.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App.Companion.appComponent
-import ya.co.yandex_finance.repository.model.Transaction
-import ya.co.yandex_finance.repository.model.utils.Categories
-import ya.co.yandex_finance.repository.model.utils.TransactionType
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.TransactionType
 import ya.co.yandex_finance.ui.fragment.FragmentArguments
 import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
 import ya.co.yandex_finance.ui.fragment.transactions.adapter.TransactionsAdapter

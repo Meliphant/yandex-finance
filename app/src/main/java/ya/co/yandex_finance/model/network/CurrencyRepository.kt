@@ -1,4 +1,4 @@
-package ya.co.yandex_finance.network
+package ya.co.yandex_finance.model.network
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

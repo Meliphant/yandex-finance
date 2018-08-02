@@ -1,4 +1,4 @@
-package ya.co.yandex_finance.repository.model.utils
+package ya.co.yandex_finance.model.entities
 
 enum class Categories(val title: String, val iconUrl: String) {
 

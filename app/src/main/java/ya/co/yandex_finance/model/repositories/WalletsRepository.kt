@@ -1,8 +1,8 @@
-package ya.co.yandex_finance.repository
+package ya.co.yandex_finance.model.repositories
 
-import ya.co.yandex_finance.repository.model.Wallet
-import ya.co.yandex_finance.repository.model.utils.Currency
-import ya.co.yandex_finance.repository.model.utils.WalletTypes
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.WalletTypes
 
 class WalletsRepository {
 

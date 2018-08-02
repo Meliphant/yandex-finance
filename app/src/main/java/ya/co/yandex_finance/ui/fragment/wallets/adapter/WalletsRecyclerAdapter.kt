@@ -12,7 +12,7 @@ import com.nshmura.recyclertablayout.RecyclerTabLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_wallet.view.*
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.repository.model.Wallet
+import ya.co.yandex_finance.model.entities.Wallet
 import java.util.*
 
 class WalletsRecyclerAdapter(var list: ArrayList<Wallet>, private val myViewPager: ViewPager?)

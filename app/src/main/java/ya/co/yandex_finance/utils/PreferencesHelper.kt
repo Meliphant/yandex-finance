@@ -1,9 +1,9 @@
-package ya.co.yandex_finance.preferences
+package ya.co.yandex_finance.utils
 
 import android.content.Context
 import android.preference.PreferenceManager
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.network.DataCurrencyRates
+import ya.co.yandex_finance.model.entities.DataCurrencyRates
 import java.util.*
 
 const val PREF_CURRENCY_USD_RUB = "pref_currency_rub"

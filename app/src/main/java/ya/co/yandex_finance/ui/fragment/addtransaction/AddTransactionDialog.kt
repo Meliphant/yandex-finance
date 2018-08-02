@@ -15,10 +15,10 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.dialog_add_transaction.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.di.appComponent
-import ya.co.yandex_finance.repository.model.Transaction
-import ya.co.yandex_finance.repository.model.Wallet
-import ya.co.yandex_finance.repository.model.utils.Categories
-import ya.co.yandex_finance.repository.model.utils.TransactionType
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.entities.Categories
+import ya.co.yandex_finance.model.entities.TransactionType
 import ya.co.yandex_finance.ui.fragment.FragmentArguments
 import java.util.*
 import javax.inject.Inject

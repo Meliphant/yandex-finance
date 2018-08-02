@@ -2,8 +2,8 @@ package ya.co.yandex_finance.app.di.module
 
 import dagger.Module
 import dagger.Provides
-import ya.co.yandex_finance.repository.TransactionsRepository
-import ya.co.yandex_finance.repository.WalletsRepository
+import ya.co.yandex_finance.model.repositories.TransactionsRepository
+import ya.co.yandex_finance.model.repositories.WalletsRepository
 import javax.inject.Singleton
 
 @Module

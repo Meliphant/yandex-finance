@@ -6,8 +6,8 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import ya.co.yandex_finance.BuildConfig
-import ya.co.yandex_finance.network.CurrencyApi
-import ya.co.yandex_finance.network.CurrencyRepository
+import ya.co.yandex_finance.model.network.CurrencyApi
+import ya.co.yandex_finance.model.network.CurrencyRepository
 import javax.inject.Singleton
 
 @Module

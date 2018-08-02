@@ -12,9 +12,9 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_wallets.view.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App.Companion.appComponent
-import ya.co.yandex_finance.repository.model.Wallet
-import ya.co.yandex_finance.repository.model.utils.Currency
-import ya.co.yandex_finance.repository.model.utils.WalletTypes
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.WalletTypes
 import ya.co.yandex_finance.ui.fragment.wallets.adapter.WalletPagerAdapter
 import ya.co.yandex_finance.ui.fragment.wallets.adapter.WalletsRecyclerAdapter
 import javax.inject.Inject

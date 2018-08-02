@@ -1,8 +1,8 @@
-package ya.co.yandex_finance.calculations
+package ya.co.yandex_finance.model.calculations
 
-import ya.co.yandex_finance.repository.model.Transaction
-import ya.co.yandex_finance.repository.model.utils.Currency
-import ya.co.yandex_finance.repository.model.utils.TransactionType
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.TransactionType
 
 object BalanceCalculations {
 

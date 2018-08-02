@@ -1,11 +1,11 @@
-package ya.co.yandex_finance.repository
+package ya.co.yandex_finance.model.repositories
 
-import ya.co.yandex_finance.repository.model.Transaction
-import ya.co.yandex_finance.repository.model.Wallet
-import ya.co.yandex_finance.repository.model.utils.Categories
-import ya.co.yandex_finance.repository.model.utils.Currency
-import ya.co.yandex_finance.repository.model.utils.TransactionType
-import ya.co.yandex_finance.repository.model.utils.WalletTypes
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.entities.Categories
+import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.TransactionType
+import ya.co.yandex_finance.model.entities.WalletTypes
 import java.util.*
 import kotlin.collections.ArrayList
 

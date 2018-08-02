@@ -1,7 +1,4 @@
-package ya.co.yandex_finance.repository.model
-
-import ya.co.yandex_finance.repository.model.utils.Currency
-import ya.co.yandex_finance.repository.model.utils.WalletTypes
+package ya.co.yandex_finance.model.entities
 
 //todo: add transaction list for every wallet & add wallet icon(?)
 data class Wallet(val id: Int,

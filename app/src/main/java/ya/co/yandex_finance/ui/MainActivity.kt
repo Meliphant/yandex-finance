@@ -7,10 +7,10 @@ import android.view.MenuItem
 import com.arellomobile.mvp.MvpAppCompatActivity
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.di.appComponent
-import ya.co.yandex_finance.network.CurrencyRepository
-import ya.co.yandex_finance.network.CurrencyRespondResult
-import ya.co.yandex_finance.network.DataCurrencyRates
-import ya.co.yandex_finance.preferences.PreferencesManager
+import ya.co.yandex_finance.model.network.CurrencyRepository
+import ya.co.yandex_finance.model.network.CurrencyRespondResult
+import ya.co.yandex_finance.model.entities.DataCurrencyRates
+import ya.co.yandex_finance.utils.PreferencesManager
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsFragment
 import javax.inject.Inject
 

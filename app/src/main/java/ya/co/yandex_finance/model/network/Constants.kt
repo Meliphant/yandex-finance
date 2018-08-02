@@ -1,4 +1,4 @@
-package ya.co.yandex_finance.network
+package ya.co.yandex_finance.model.network
 
 import ya.co.yandex_finance.BuildConfig
 
