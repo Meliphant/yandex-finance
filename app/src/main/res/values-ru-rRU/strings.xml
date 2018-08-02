@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">финансы</string>
+    <string name="app_name">Финансы</string>
 
     <!--balance screen-->
     <string name="text_current_balance">Текущий баланс:</string>
@@ -12,8 +12,6 @@
 
     <!--settings screen-->
     <string name="settings_activity_title">Настройки</string>
-    <string name="usd_balance_sign">$</string>
-    <string name="rub_balance_sign">₽</string>
 
     <!--transactions screen-->
     <string name="transaction_item_description">категория</string>
@@ -23,5 +21,4 @@
     <!--add transaction screen-->
     <string name="add_transaction_goal">Введите описание</string>
     <string name="add_transaction_btn">Добавить транзакцию</string>
-
 </resources>

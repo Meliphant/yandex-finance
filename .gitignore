@@ -1,15 +1,3 @@
-*.iml
-.gradle
-/local.properties
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-
-
 # Built application files
 *.apk
 *.ap_
@@ -27,6 +15,7 @@ out/
 
 # Gradle files
 .gradle/
+gradle.properties
 build/
 
 # Local configuration file (sdk path, etc)
@@ -46,6 +35,7 @@ captures/
 
 # IntelliJ
 *.iml
+.idea
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml

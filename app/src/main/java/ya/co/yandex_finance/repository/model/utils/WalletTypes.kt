@@ -1,15 +1,8 @@
 package ya.co.yandex_finance.repository.model.utils
 
-enum class WalletTypes {
-    CASH {
-        override fun toString(): String = "Cash" //todo: get the name from string?
-        override val iconUrl = "wallet_cash"
-    },
-    CARD {
-        override fun toString(): String = "Card"
-        override val iconUrl = "wallet_card"
-    };
+enum class WalletTypes(val title: String, val iconUrl: String) {
+    CASH("Cash", "wallet_cash"),
+    CARD("Card", "wallet_card");
 
-    abstract override fun toString(): String
-    abstract val iconUrl: String
+    override fun toString() = title
 }

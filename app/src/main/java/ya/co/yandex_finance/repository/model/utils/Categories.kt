@@ -1,19 +1,10 @@
 package ya.co.yandex_finance.repository.model.utils
 
-enum class Categories {
-    TRAVEL {
-        override fun toString(): String = "Travel"
-        override val iconUrl = "category_travel"
-    },
-    RESTAURANTS {
-        override fun toString(): String = "Restaurant"
-        override val iconUrl = "category_restaurants"
-    },
-    GROCERIES {
-        override fun toString(): String = "Groceries"
-        override val iconUrl = "category_groceries"
-    };
+enum class Categories(val title: String, val iconUrl: String) {
 
-    abstract override fun toString(): String
-    abstract val iconUrl: String
+    TRAVEL("Travel", "category_travel"),
+    RESTAURANTS("Restaurant", "category_restaurants"),
+    GROCERIES("Groceries", "category_groceries");
+
+    override fun toString() = title
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">fintracker</string>
+    <string name="app_name">Fintracker</string>
 
     <!--balance screen-->
     <string name="text_current_balance">Current balance:</string>
@@ -9,20 +9,22 @@
     <string name="about_text">The app for managing your finances <b><i>Fintracker</i></b>.
         \n\nУправляйте и следите за своим денежным потоком во всех валютах</string>
 
-
     <!--settings screen-->
     <string name="settings_activity_title">Settings</string>
-    <string name="usd_balance_sign">$</string>
-    <string name="rub_balance_sign">₽</string>
+    <string name="usd_balance_sign" translatable="false">$</string>
+    <string name="rub_balance_sign" translatable="false">₽</string>
 
     <!--transactions screen-->
     <string name="transaction_item_description">img</string>
     <string name="new_expense"> New expense</string>
     <string name="new_income">New income</string>
+    <string name="income_amount" translatable="false">+ %.1f %s</string>
+    <string name="outcome_amount" translatable="false">- %.1f %s</string>
 
     <!--add transaction screen-->
     <string name="transaction_description_hint">Enter the description</string>
     <string name="add_transaction_btn">Add transaction</string>
 
-
+    <!--preferences-->
+    <string name="pref_default_usd_rub_currency_rate">60</string>
 </resources>
