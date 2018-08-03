@@ -20,8 +20,8 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun addSettingsList() {
         if (fragmentManager.findFragmentById(android.R.id.content) == null) {
-            fragmentManager.beginTransaction()
-                    .add(android.R.id.content, SettingsFragment())
+            supportFragmentManager.beginTransaction()
+                    .replace(android.R.id.content, SettingsFragment())
                     .commit()
         }
     }

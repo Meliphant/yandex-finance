@@ -5,4 +5,5 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
-    tools:context=".ui.SettingsActivity" />
+    tools:context=".ui.SettingsActivity"
+    android:theme="@style/AppTheme"/>

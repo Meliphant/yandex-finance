@@ -2,28 +2,22 @@ package ya.co.yandex_finance.ui.fragment
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.ListPreference
-import android.preference.Preference
 import android.util.Log
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
 import ya.co.yandex_finance.ui.fragment.addwallets.AddWalletDialog
 
-mport android.support.v7.preference.ListPreference
+import android.support.v7.preference.ListPreference
 import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
-import android.util.Log
-import ya.co.yandex_finance.R
 import ya.co.yandex_finance.model.entities.Currency
-import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
-import ya.co.yandex_finance.ui.fragment.addwallets.AddWalletDialog
 
 class SettingsFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        super.onCreate(savedInstanceState)
-        addPreferencesFromResource(R.xml.settings)
+//        super.onCreate(savedInstanceState)
+        setPreferencesFromResource(R.xml.settings, rootKey)
 
         val listPreferenceCurrency: Preference = findPreference(getString(R.string.settings_currency_key))
         val listPreferenceWalletsEdit: Preference = findPreference(getString(R.string.settings_wallets_key_edit))
@@ -37,7 +31,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
             true
         }
     }
-
 
     private fun setListPreferenceCurrency(listPreference: Preference) {
 

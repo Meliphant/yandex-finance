@@ -22,5 +22,4 @@
             android:summary="@string/settings_wallets_summary_create"
             android:title="@string/settings_wallets_title_create" />
     </PreferenceCategory>
-
 </PreferenceScreen>

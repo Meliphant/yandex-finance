@@ -38,20 +38,20 @@ def fabVer = '1.10.1'
 def junitVer = '4.12'
 def testRunnerVer = '1.0.2'
 def espressoVer = '3.0.2'
+def takisoft = "$supportVer.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
+    implementation "com.android.support:preference-v14:$supportVer"
     implementation "com.android.support:appcompat-v7:$supportVer"
     implementation "com.android.support:design:$supportVer"
     implementation "com.android.support:support-vector-drawable:$supportVer"
     implementation "com.android.support:support-v4:$supportVer"
     implementation "com.android.support:recyclerview-v7:$supportVer"
-    implementation "com.android.support:support-v4:$supportVer"
     implementation "com.android.support:cardview-v7:$supportVer"
-    implementation "com.android.support:appcompat-v7:$supportVer"
     implementation "com.android.support.constraint:constraint-layout:$constraintVer"
+    implementation "com.takisoft.fix:preference-v7:$takisoft"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
