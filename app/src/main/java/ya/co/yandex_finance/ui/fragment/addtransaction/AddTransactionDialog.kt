@@ -76,9 +76,9 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
     }
 
     private fun setupViews() {
-        button_close.setOnClickListener { dismiss() }
+        tv_cancel.setOnClickListener { dismiss() }
 
-        button_save?.setOnClickListener { onSaveClicked() }
+        tv_save?.setOnClickListener { onSaveClicked() }
 
         val categories = Categories.values().map { it.toString() }
         val categoriesAdapter = ArrayAdapter<String>(context,

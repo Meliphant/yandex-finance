@@ -12,11 +12,24 @@ import com.nshmura.recyclertablayout.RecyclerTabLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_wallet.view.*
 import ya.co.yandex_finance.R
+import ya.co.yandex_finance.model.entities.Transaction
 import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment
+import ya.co.yandex_finance.ui.fragment.wallets.WalletsFragment
 import java.util.*
 
-class WalletsRecyclerAdapter(var list: ArrayList<Wallet>, private val myViewPager: ViewPager?)
+class WalletsRecyclerAdapter(var list: ArrayList<Wallet>, private val myViewPager: ViewPager?,
+                             private val listener: WalletsFragment.OnListFragmentInteractionListener?)
     : RecyclerTabLayout.Adapter<WalletsRecyclerAdapter.ViewHolder>(myViewPager) {
+
+    private val mOnClickListener: View.OnClickListener
+
+    init {
+        mOnClickListener = View.OnClickListener {
+            val item = it.tag as Wallet
+            listener?.onListFragmentInteraction(item)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

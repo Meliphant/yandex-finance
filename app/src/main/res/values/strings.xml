@@ -33,8 +33,10 @@
     <string name="outcome_amount" translatable="false">- %.1f %s</string>
 
     <!--add transaction screen-->
-    <string name="transaction_description_hint">Enter the description</string>
-    <string name="add_transaction_btn">Add transaction</string>
+    <string name="hint_transaction_description">Description</string>
+    <string name="hint_transaction_sum">0</string>
+    <string name="add_transaction_title_wallet">Wallet</string>
+    <string name="add_transaction_title_category">Category</string>
 
     <!--add wallet screen-->
     <string name="text_new_wallet_header">Add wallet</string>
@@ -43,6 +45,7 @@
     <string name="hint_wallet_name">Enter wallet name</string>
     <string name="cancel">CANCEL</string>
     <string name="save">SAVE</string>
+    <string name="empty_name_message">Wallet name should not be empty.</string>
 
     <!--preferences-->
     <string name="pref_default_usd_rub_currency_rate">60</string>

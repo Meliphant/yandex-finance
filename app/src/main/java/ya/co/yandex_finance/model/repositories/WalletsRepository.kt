@@ -15,9 +15,6 @@ class WalletsRepository {
 
         wallets.add(Wallet(2, "anRubWallet", Currency.RUB, WalletTypes.CASH))
         wallets.add(Wallet(3, "anUsdWallet", Currency.USD, WalletTypes.CARD))
-
-        for (i in 15..20)
-            wallets.add(Wallet(i, "wl$i", Currency.USD, WalletTypes.CARD))
     }
 
     //get total money in a wallet
