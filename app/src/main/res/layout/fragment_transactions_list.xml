@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,16 +25,14 @@
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:context=".ui.fragment.transactions.TransactionsFragment"
         tools:listitem="@layout/item_transaction"
-        app:layout_constraintTop_toBottomOf="@+id/tv_list_title">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_below="@+id/tv_list_title"/>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="6dp"
         android:layout_marginEnd="6dp"
         app:layout_anchor="@id/rv_list_transactions"
@@ -71,4 +69,4 @@
             app:fab_title="@string/new_expense" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

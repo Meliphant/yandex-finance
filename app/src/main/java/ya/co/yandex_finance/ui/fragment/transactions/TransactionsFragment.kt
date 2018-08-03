@@ -109,15 +109,17 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
         }
     }
 
-
     interface OnListFragmentInteractionListener {
         fun onListFragmentInteraction(item: Transaction?)
     }
 
     companion object {
         const val DIALOG_REQUEST_CODE = 42
-        fun newInstance(walletId: Int): TransactionsFragment = TransactionsFragment().apply {
-            arguments = Bundle().apply { putInt(FragmentArguments.KEY_WALLET_ID.name, walletId) }
+        fun newInstance(walletId: Int): TransactionsFragment =
+                TransactionsFragment().apply {
+                    arguments = Bundle().apply {
+                        putInt(FragmentArguments.KEY_WALLET_ID.name, walletId)
+                    }
         }
     }
 }

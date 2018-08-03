@@ -23,7 +23,7 @@ class TransactionsAdapter(
     : RecyclerView.Adapter<TransactionsAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
-    private val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.ROOT)
+    private val dateFormat = SimpleDateFormat("dd.MM HH:mm", Locale.ROOT)
 
     init {
         mOnClickListener = View.OnClickListener {
@@ -60,7 +60,7 @@ class TransactionsAdapter(
         holder.trWalletName.text = item.wallet.name
     }
 
-    override fun getItemCount(): Int = transactions.size
+    override fun getItemCount() = transactions.size
 
     private fun setAmount(color: Int, transaction: Transaction, holder: ViewHolder, format: Int) {
         holder.trAmount.setTextColor(color)

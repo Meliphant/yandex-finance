@@ -13,7 +13,5 @@ class WalletPagerAdapter(private var list: ArrayList<Wallet>, fm: FragmentManage
         return TransactionsFragment.newInstance(list[position].id)
     }
 
-    override fun getCount(): Int {
-        return list.size
-    }
+    override fun getCount() = list.size
 }

@@ -2,6 +2,7 @@ package ya.co.yandex_finance.model.repositories
 
 import ya.co.yandex_finance.model.entities.Wallet
 import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.Transaction
 import ya.co.yandex_finance.model.entities.WalletTypes
 
 class WalletsRepository {
@@ -25,4 +26,8 @@ class WalletsRepository {
     }
 
     fun getWalletById(id: Int) = wallets.first { it.id == id }
+
+    fun addWallet(wallet: Wallet) {
+        wallets.add(wallet)
+    }
 }
