@@ -16,7 +16,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-//        super.onCreate(savedInstanceState)
         setPreferencesFromResource(R.xml.settings, rootKey)
 
         val listPreferenceCurrency: Preference = findPreference(getString(R.string.settings_currency_key))
@@ -63,9 +62,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
     }
 
-    //todo: add wallets
     private fun navigateAddWalletDialog(settingsFragment: SettingsFragment) {
-        val dialog = AddWalletDialog.newInstance(settingsFragment)
+        val dialog = AddWalletDialog.newInstance()
         val ft = fragmentManager?.beginTransaction()
         dialog.show(ft, AddTransactionDialog.TAG)
     }

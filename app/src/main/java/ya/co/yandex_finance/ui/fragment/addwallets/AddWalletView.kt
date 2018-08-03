@@ -4,5 +4,5 @@ import com.arellomobile.mvp.MvpView
 import ya.co.yandex_finance.model.entities.Wallet
 
 interface AddWalletView : MvpView {
-    fun showWallet(wallet: Wallet)
+    fun loadWallet(wallets: ArrayList<Wallet>)
 }

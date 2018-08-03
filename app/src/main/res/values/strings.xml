@@ -41,6 +41,8 @@
     <string name="text_new_wallet_currency">Select currency</string>
     <string name="text_new_wallet_type">Select wallet type</string>
     <string name="hint_wallet_name">Enter wallet name</string>
+    <string name="cancel">CANCEL</string>
+    <string name="save">SAVE</string>
 
     <!--preferences-->
     <string name="pref_default_usd_rub_currency_rate">60</string>

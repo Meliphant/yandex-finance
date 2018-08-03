@@ -27,7 +27,7 @@ class WalletsRepository {
 
     fun getWalletById(id: Int) = wallets.first { it.id == id }
 
-    fun addWallet(wallet: Wallet) {
+    fun addWallet(wallet: Wallet){
         wallets.add(wallet)
     }
 }

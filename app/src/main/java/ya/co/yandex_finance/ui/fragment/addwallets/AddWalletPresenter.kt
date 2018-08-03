@@ -13,9 +13,10 @@ class AddWalletPresenter
 
     fun addWallet(wallet: Wallet) {
         walletsRepository.addWallet(wallet)
+
     }
 
-    fun loadWalletById(id: Int) {
-        viewState.showWallet(walletsRepository.getWalletById(id))
+    fun showNewWallet(wallets: ArrayList<Wallet>){
+        viewState.loadWallet(wallets)
     }
 }
