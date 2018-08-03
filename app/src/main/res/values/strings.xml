@@ -15,11 +15,15 @@
     <string name="usd_balance_sign" translatable="false">$</string>
     <string name="rub_balance_sign" translatable="false">₽</string>
     <string name="settings_currency_key">currency</string>
-    <string name="settings_wallets_key">wallets</string>
+    <string name="settings_wallets_key_edit">wallets_edit</string>
+    <string name="settings_wallets_key_create">wallets_create</string>
     <string name="settings_currency_title">Currency</string>
     <string name="settings_wallets_title">Wallets</string>
+    <string name="settings_wallets_title_edit">Edit wallet</string>
+    <string name="settings_wallets_title_create">Create new wallet</string>
     <string name="settings_currency_summary">Select one custom currency</string>
-    <string name="settings_wallets_summary">Edit wallet</string>
+    <string name="settings_wallets_summary_edit">Click to manage your current wallets</string>
+    <string name="settings_wallets_summary_create">Click to create new wallet</string>
 
     <!--transactions screen-->
     <string name="transaction_item_description">img</string>
@@ -31,6 +35,12 @@
     <!--add transaction screen-->
     <string name="transaction_description_hint">Enter the description</string>
     <string name="add_transaction_btn">Add transaction</string>
+
+    <!--add wallet screen-->
+    <string name="text_new_wallet_header">Add wallet</string>
+    <string name="text_new_wallet_currency">Select currency</string>
+    <string name="text_new_wallet_type">Select wallet type</string>
+    <string name="hint_wallet_name">Enter wallet name</string>
 
     <!--preferences-->
     <string name="pref_default_usd_rub_currency_rate">60</string>

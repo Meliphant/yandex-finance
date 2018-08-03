@@ -4,23 +4,40 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.ListPreference
 import android.preference.Preference
-import android.preference.PreferenceFragment
+import android.util.Log
+import ya.co.yandex_finance.R
+import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
+import ya.co.yandex_finance.ui.fragment.addwallets.AddWalletDialog
+
+mport android.support.v7.preference.ListPreference
+import android.support.v7.preference.Preference
+import android.support.v7.preference.PreferenceFragmentCompat
 import android.util.Log
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
+import ya.co.yandex_finance.ui.fragment.addwallets.AddWalletDialog
 
-class SettingsFragment : PreferenceFragment(),
+class SettingsFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreate(savedInstanceState)
         addPreferencesFromResource(R.xml.settings)
 
         val listPreferenceCurrency: Preference = findPreference(getString(R.string.settings_currency_key))
-        val listPreferenceWallets: Preference = findPreference(getString(R.string.settings_wallets_key))
+        val listPreferenceWalletsEdit: Preference = findPreference(getString(R.string.settings_wallets_key_edit))
+
         setListPreferenceCurrency(listPreferenceCurrency)
-        setListPreferenceWallets(listPreferenceWallets)
+        setListPreferenceWallets(listPreferenceWalletsEdit)
+
+        val preferenceWalletsCreate = findPreference(getString(R.string.settings_wallets_key_create))
+        preferenceWalletsCreate.setOnPreferenceClickListener {
+            navigateAddWalletDialog(this)
+            true
+        }
     }
+
 
     private fun setListPreferenceCurrency(listPreference: Preference) {
 
@@ -53,6 +70,13 @@ class SettingsFragment : PreferenceFragment(),
         }
     }
 
+    //todo: add wallets
+    private fun navigateAddWalletDialog(settingsFragment: SettingsFragment) {
+        val dialog = AddWalletDialog.newInstance(settingsFragment)
+        val ft = fragmentManager?.beginTransaction()
+        dialog.show(ft, AddTransactionDialog.TAG)
+    }
+
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
 
         if (key == getString(R.string.settings_currency_key)) {
@@ -61,7 +85,7 @@ class SettingsFragment : PreferenceFragment(),
             Log.d("SettingsActivity", "sharedPref" + connectionPref)
         }
 
-        if (key == getString(R.string.settings_wallets_key)) {
+        if (key == getString(R.string.settings_wallets_key_edit)) {
             //todo: add wallets editor
         }
     }
