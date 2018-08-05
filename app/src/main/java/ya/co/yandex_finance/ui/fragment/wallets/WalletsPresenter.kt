@@ -2,6 +2,11 @@ package ya.co.yandex_finance.ui.fragment.wallets
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.entities.WalletTypes
 import ya.co.yandex_finance.model.repositories.WalletsRepository
 import javax.inject.Inject
 
@@ -9,7 +14,28 @@ import javax.inject.Inject
 class WalletsPresenter @Inject constructor(private val walletsRepository: WalletsRepository)
     : MvpPresenter<WalletsView>() {
 
+    fun updateWallet(wallet: Wallet) {
+        walletsRepository.updateWallet(wallet)
+    }
+
+    fun deleteWallet(wallet: Wallet) {
+        walletsRepository.deleteWallet(wallet)
+    }
+
+    fun addWallet(wallet: Wallet) {
+        walletsRepository.addWallet(wallet)
+    }
+
     fun loadWallets() {
-        viewState.showWallets(walletsRepository.wallets)
+        walletsRepository.getWallets()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe { showWallets(it) }
+    }
+
+    private fun showWallets(wallets: List<Wallet>) {
+        val list = ArrayList(wallets)
+        list.add(0, Wallet(-1, "All wallets", Currency.USD, WalletTypes.CASH))
+        viewState.showWallets(list)
     }
 }

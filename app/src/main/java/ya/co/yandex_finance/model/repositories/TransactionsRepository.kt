@@ -1,36 +1,48 @@
 package ya.co.yandex_finance.model.repositories
 
+import io.reactivex.Completable
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ya.co.yandex_finance.model.entities.Transaction
-import ya.co.yandex_finance.model.entities.Wallet
-import ya.co.yandex_finance.model.entities.Categories
-import ya.co.yandex_finance.model.entities.Currency
-import ya.co.yandex_finance.model.entities.TransactionType
-import ya.co.yandex_finance.model.entities.WalletTypes
-import java.util.*
-import kotlin.collections.ArrayList
+import ya.co.yandex_finance.model.entities.TransactionWithWallet
+import ya.co.yandex_finance.model.persistence.WalletDatabase
 
-class TransactionsRepository {
+class TransactionsRepository(private val walletDatabase: WalletDatabase) {
 
-    private val wallet1 = Wallet(0, "myRubWallet", Currency.RUB, WalletTypes.CASH)
-    private val wallet2 = Wallet(1, "myUsdWallet", Currency.USD, WalletTypes.CARD)
-    private val wallet3 = Wallet(2, "myUsdWallet", Currency.USD, WalletTypes.CARD)
-
-    val transactions = arrayListOf<Transaction>()
-
-    init {
-        for (i in 1..15)
-            transactions.add(Transaction("got salary $i", 200.0, TransactionType.INCOME, Categories.TRAVEL, wallet1, Date()))
-        for (i in 1..15)
-            transactions.add(Transaction("dinner outside $i", 350.0, TransactionType.OUTCOME, Categories.RESTAURANTS, wallet2, Date()))
-        for (i in 1..15)
-            transactions.add(Transaction("bought a bread $i", 50.0, TransactionType.OUTCOME, Categories.GROCERIES, wallet3, Date()))
+    fun getAllTransactionsWithWallet(): Flowable<List<TransactionWithWallet>> {
+        return walletDatabase.transactionDao().getAllTransactionsWithWallet()
     }
 
-    fun getTransactions(walletId: Int): ArrayList<Transaction> {
-        return ArrayList(transactions.filter { it.wallet.id == walletId })
+    fun getTransactionsWithWallet(walletId: Int): Flowable<List<TransactionWithWallet>> {
+        return walletDatabase.transactionDao().getTransactionsWithWallet(walletId)
     }
 
     fun addTransaction(transaction: Transaction) {
-        transactions.add(transaction)
+        Completable.fromAction { walletDatabase.transactionDao().insert(transaction) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+    }
+
+    fun deleteAllTransactions() {
+        Completable.fromAction { walletDatabase.transactionDao().deleteAll() }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+    }
+
+    fun deleteTransactionById(id: Int) {
+        Completable.fromAction { walletDatabase.transactionDao().deleteById(id) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+    }
+
+    fun updateTransaction(transaction: Transaction) {
+        Completable.fromAction { walletDatabase.transactionDao().update(transaction) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
     }
 }

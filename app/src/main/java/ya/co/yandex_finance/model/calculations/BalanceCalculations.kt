@@ -20,30 +20,33 @@ object BalanceCalculations {
     }
 
     //todo
-    fun calculateBalance(transactions: List<Transaction>, currencyRate: Double):
-            Pair<Double, Double> {
-
-        val baseBalance = transactions.map {
-            if (it.wallet.currency == Currency.RUB)
-                itemAmountWithSign(it) / currencyRate
-            else
-                itemAmountWithSign(it)
-        }.sum()
-
-        return Pair(baseBalance, baseBalance * currencyRate)
-    }
+//    fun calculateBalance(transactions: List<Transaction>, currencyRate: Double):
+//            Pair<Double, Double> {
+//
+//        val baseBalance = transactions.map {
+//            if (it.wallet.currency == Currency.RUB)
+//                itemAmountWithSign(it) / currencyRate
+//            else
+//                itemAmountWithSign(it)
+//        }.sum()
+//
+//        return Pair(baseBalance, baseBalance * currencyRate)
+//    }
 
     //todo
     private fun getTotalBalance(transactions: List<Transaction>,
                                 currencyRate: Double): Double {
         var totalBalance = 0.00
-        for (transactionItem in transactions) {
-            totalBalance += if (transactionItem.wallet.currency == Currency.RUB) {
-                itemAmountWithSign(transactionItem) / currencyRate
-            } else {
-                itemAmountWithSign(transactionItem)
-            }
-        }
+        val x = transactions
+        val y = currencyRate
+        x + y
+//        for (transactionItem in transactions) {
+//            totalBalance += if (transactionItem.wallet.currency == Currency.RUB) {
+//                itemAmountWithSign(transactionItem) / currencyRate
+//            } else {
+//                itemAmountWithSign(transactionItem)
+//            }
+//        }
         return totalBalance
     }
 

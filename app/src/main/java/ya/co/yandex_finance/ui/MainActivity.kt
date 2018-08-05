@@ -1,45 +1,26 @@
 package ya.co.yandex_finance.ui
 
-import android.content.DialogInterface
+import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
+import kotlinx.android.synthetic.main.fragment_wallets.*
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.app.di.appComponent
-import ya.co.yandex_finance.model.network.CurrencyRepository
-import ya.co.yandex_finance.model.network.CurrencyRespondResult
-import ya.co.yandex_finance.model.entities.DataCurrencyRates
-import ya.co.yandex_finance.utils.PreferencesManager
+import ya.co.yandex_finance.model.entities.TransactionType
+import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
+import ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsFragment
-import javax.inject.Inject
-
 
 class MainActivity : MvpAppCompatActivity() {
-
-    @Inject
-    lateinit var currencyRepository: CurrencyRepository
-    private val currencyRespondResult = object: CurrencyRespondResult {
-        override fun onCurrencyErrorLoad() {/*NOP*/}
-        override fun onCurrencySuccessLoad(currencyRates: DataCurrencyRates) {
-            PreferencesManager.setCurrencyRates(this@MainActivity, currencyRates)
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        appComponent.inject(this)
-        currencyRepository.loadCurrencies(currencyRespondResult)
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_wallets, WalletsFragment())
-                .commitAllowingStateLoss()
+        replaceWallets()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -67,28 +48,34 @@ class MainActivity : MvpAppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == RC_SETTINGS && resultCode == 21) {
+            replaceWallets()
+        }
+    }
+
+    private fun replaceWallets() {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_wallets, WalletsFragment())
+                .commitAllowingStateLoss()
+    }
+
     private fun startSettings() {
-        startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+        startActivityForResult(Intent(this@MainActivity, SettingsActivity::class.java), RC_SETTINGS)
     }
 
     private fun showAboutDialog() {
         AlertDialog.Builder(this@MainActivity)
                 .setView(R.layout.dialog_about)
                 .setTitle(R.string.about_title)
-                .setPositiveButton(android.R.string.ok){dialog, _ ->
-                    dialog.dismiss();
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    dialog.dismiss()
                 }
                 .create()
                 .show()
     }
 
-    //todo remove if use DialogFragment
-    fun showUpButton() {
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-    }
-
-    //todo remove if use DialogFragment
-    fun hideUpButton() {
-        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+    companion object {
+        const val RC_SETTINGS = 21
     }
 }

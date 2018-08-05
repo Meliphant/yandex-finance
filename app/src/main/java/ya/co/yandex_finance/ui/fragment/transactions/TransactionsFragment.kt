@@ -1,8 +1,6 @@
 package ya.co.yandex_finance.ui.fragment.transactions
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,15 +13,10 @@ import kotlinx.android.synthetic.main.fragment_transactions_list.view.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App.Companion.appComponent
 import ya.co.yandex_finance.model.entities.Transaction
-import ya.co.yandex_finance.model.entities.TransactionType
+import ya.co.yandex_finance.model.entities.TransactionWithWallet
 import ya.co.yandex_finance.ui.fragment.FragmentArguments
-import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
 import ya.co.yandex_finance.ui.fragment.transactions.adapter.TransactionsAdapter
-import java.util.*
 import javax.inject.Inject
-
-
-const val FAB_SCROLL_THRESHOLD = 20
 
 class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
 
@@ -52,8 +45,6 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
             walletId = it.getInt(FragmentArguments.KEY_WALLET_ID.name)
         }
         transactionsPresenter.loadTransactions(walletId)
-
-        setupViews(rootView)
         return rootView
     }
 
@@ -67,46 +58,9 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
         listener = null
     }
 
-    override fun showTransactionsList(tr: ArrayList<Transaction>) {
-        rootView.rv_list_transactions.adapter = TransactionsAdapter(tr, listener)
-    }
-
-    private fun setupViews(rootView: View) {
-        //todo Remove?
-//        //show or hide fab
-//        rootView.rv_list_transactions.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-//                if (dy > FAB_SCROLL_THRESHOLD && fab_menu.visibility == View.VISIBLE) {
-//                    fab_menu.collapse()
-//                    fab_menu.visibility = View.INVISIBLE
-//                    return
-//                }
-//                if (dy < -FAB_SCROLL_THRESHOLD && fab_menu.visibility != View.VISIBLE) {
-//                    fab_menu.visibility = View.VISIBLE
-//                }
-//            }
-//        })
-
-        rootView.fab_new_income.setOnClickListener {
-            val dialog = AddTransactionDialog.newInstance(walletId, TransactionType.INCOME)
-            val ft = fragmentManager?.beginTransaction()
-            dialog.setTargetFragment(this, DIALOG_REQUEST_CODE)
-            dialog.show(ft, AddTransactionDialog.TAG)
-        }
-
-        rootView.fab_new_expense.setOnClickListener {
-            val dialog = AddTransactionDialog.newInstance(walletId, TransactionType.OUTCOME)
-            val ft = fragmentManager?.beginTransaction()
-            dialog.setTargetFragment(this, DIALOG_REQUEST_CODE)
-            dialog.show(ft, AddTransactionDialog.TAG)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == DIALOG_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            transactionsPresenter.loadTransactions(walletId)
-        }
+    override fun showTransactionsList(transactions: List<TransactionWithWallet>) {
+        rootView.rv_list_transactions.adapter = TransactionsAdapter(context!!, transactions, listener)
+        rootView.rv_list_transactions.invalidate()
     }
 
     interface OnListFragmentInteractionListener {
@@ -114,7 +68,6 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
     }
 
     companion object {
-        const val DIALOG_REQUEST_CODE = 42
         fun newInstance(walletId: Int): TransactionsFragment =
                 TransactionsFragment().apply {
                     arguments = Bundle().apply {

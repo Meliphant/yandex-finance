@@ -1,35 +1,35 @@
 package ya.co.yandex_finance.ui.fragment
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import ya.co.yandex_finance.R
-import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
-import ya.co.yandex_finance.ui.fragment.addwallets.AddWalletDialog
-
 import android.support.v7.preference.ListPreference
 import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
+import ya.co.yandex_finance.R
 import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.ui.fragment.addwallets.AddWalletDialog
+import ya.co.yandex_finance.ui.fragment.editwallet.EditWalletDialog
 
-class SettingsFragment : PreferenceFragmentCompat(),
-        SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings, rootKey)
 
         val listPreferenceCurrency: Preference = findPreference(getString(R.string.settings_currency_key))
-        val listPreferenceWalletsEdit: Preference = findPreference(getString(R.string.settings_wallets_key_edit))
-
         setListPreferenceCurrency(listPreferenceCurrency)
-        setListPreferenceWallets(listPreferenceWalletsEdit)
+
+        val listPreferenceWalletsEdit: Preference = findPreference(getString(R.string.settings_wallets_key_edit))
+        listPreferenceWalletsEdit.setOnPreferenceClickListener {
+            navigateEditWalletDialog()
+            true
+        }
 
         val preferenceWalletsCreate = findPreference(getString(R.string.settings_wallets_key_create))
         preferenceWalletsCreate.setOnPreferenceClickListener {
-            navigateAddWalletDialog(this)
+            navigateAddWalletDialog()
             true
         }
     }
+
 
     private fun setListPreferenceCurrency(listPreference: Preference) {
 
@@ -47,51 +47,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
     }
 
-    private fun setListPreferenceWallets(listPreference: Preference) {
-
-        if (listPreference is ListPreference) {
-            //TODO: Load real wallets
-            val entries = arrayOf<CharSequence>(Currency.USD.toString(),
-                    Currency.RUB.toString(), Currency.EUR.toString())
-            val walletsKeySharedPref = arrayOf<CharSequence>(Currency.USD.toString(),
-                    Currency.RUB.toString(), Currency.EUR.toString())
-            listPreference.entries = entries
-            listPreference.setDefaultValue(defaultValue)
-            listPreference.entryValues = walletsKeySharedPref
-            listPreference.setDialogTitle(R.string.settings_wallets_title)
-        }
-    }
-
-    private fun navigateAddWalletDialog(settingsFragment: SettingsFragment) {
-        val dialog = AddWalletDialog.newInstance()
+    private fun navigateEditWalletDialog() {
+        val dialog = EditWalletDialog()
         val ft = fragmentManager?.beginTransaction()
-        dialog.show(ft, AddTransactionDialog.TAG)
+        dialog.show(ft, EditWalletDialog.TAG)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-
-        if (key == getString(R.string.settings_currency_key)) {
-            val connectionPref = findPreference(key)
-            //todo: remove log
-            Log.d("SettingsActivity", "sharedPref" + connectionPref)
-        }
-
-        if (key == getString(R.string.settings_wallets_key_edit)) {
-            //todo: add wallets editor
-        }
+    private fun navigateAddWalletDialog() {
+        val dialog = AddWalletDialog()
+        val ft = fragmentManager?.beginTransaction()
+        dialog.show(ft, AddWalletDialog.TAG)
     }
 
-    override fun onResume() {
-        super.onResume()
-        preferenceScreen.sharedPreferences
-                .registerOnSharedPreferenceChangeListener(this)
-    }
 
-    override fun onPause() {
-        super.onPause()
-        preferenceScreen.sharedPreferences
-                .unregisterOnSharedPreferenceChangeListener(this)
-    }
 
     companion object {
         const val defaultValue = "1"

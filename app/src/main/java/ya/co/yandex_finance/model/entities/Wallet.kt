@@ -1,7 +1,10 @@
 package ya.co.yandex_finance.model.entities
 
-//todo: add transaction list for every wallet & add wallet icon(?)
-data class Wallet(val id: Int,
-                  val name: String,
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+
+@Entity(tableName = "wallets")
+data class Wallet(@PrimaryKey(autoGenerate = true) var wId: Int,
+                  var name: String,
                   val currency: Currency,
                   val walletType: WalletTypes)

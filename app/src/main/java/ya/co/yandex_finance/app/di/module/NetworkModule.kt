@@ -7,15 +7,16 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import ya.co.yandex_finance.BuildConfig
 import ya.co.yandex_finance.model.network.CurrencyApi
-import ya.co.yandex_finance.model.network.CurrencyRepository
+import ya.co.yandex_finance.model.network.CurrencyService
 import javax.inject.Singleton
+import kotlin.jvm.java
 
 @Module
 class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesCurrencyRepository(currencyApi: CurrencyApi) = CurrencyRepository(currencyApi)
+    fun providesCurrencyRepository(currencyApi: CurrencyApi) = CurrencyService(currencyApi)
 
     @Singleton
     @Provides

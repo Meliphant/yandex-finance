@@ -2,6 +2,7 @@ package ya.co.yandex_finance.model.entities
 
 enum class Categories(val title: String, val iconUrl: String) {
 
+    NOCATEGORY("No category", "category_no"),
     TRAVEL("Travel", "category_travel"),
     RESTAURANTS("Restaurant", "category_restaurants"),
     GROCERIES("Groceries", "category_groceries"),

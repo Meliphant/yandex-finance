@@ -26,6 +26,7 @@ android {
 
 def supportVer = '27.1.1'
 def constraintVer = '1.1.2'
+def roomVer = '1.1.1'
 def retrofit = '2.4.0'
 def rxjava = '2.1.8'
 def rxandroid = '2.0.1'
@@ -39,6 +40,8 @@ def junitVer = '4.12'
 def testRunnerVer = '1.0.2'
 def espressoVer = '3.0.2'
 def takisoft = "$supportVer.0"
+def workerVer = "1.0.0-alpha06"
+def stethoVer = "1.5.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -53,27 +56,48 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraintVer"
     implementation "com.takisoft.fix:preference-v7:$takisoft"
 
+    //Room
+    implementation "android.arch.persistence.room:runtime:$roomVer"
+    kapt "android.arch.persistence.room:compiler:$roomVer"
+    implementation "android.arch.persistence.room:rxjava2:$roomVer"
+
+    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    //Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava"
 
+    //Moxy
     implementation "com.arello-mobile:moxy-app-compat:$moxyVer"
     kapt "com.arello-mobile:moxy-compiler:$moxyVer"
 
+    //Dagger
     implementation "com.google.dagger:dagger:$daggerVer"
     kapt "com.google.dagger:dagger-compiler:$daggerVer"
 
+    //Glide
     implementation "com.github.bumptech.glide:glide:$glideVer"
     kapt "com.github.bumptech.glide:compiler:$glideVer"
 
+    //CircularImageView
     implementation "de.hdodenhof:circleimageview:$circleImageViewVer"
 
+    //RecyclerTab
     implementation "com.nshmura:recyclertablayout:$recyclerTabLayoutVer"
 
+    //FAB menu
     implementation "com.getbase:floatingactionbutton:$fabVer"
 
+    //Worker
+    implementation "android.arch.work:work-runtime:$workerVer"
+
+    //Stetho
+    implementation "com.facebook.stetho:stetho:$stethoVer"
+
+    //Tests
     testImplementation "junit:junit:$junitVer"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVer"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVer"

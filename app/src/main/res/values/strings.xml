@@ -4,6 +4,7 @@
     <!--balance screen-->
     <string name="text_current_balance">Current balance:</string>
     <string name="title_transaction_list">TRANSACTIONS</string>
+    <string name="title_transaction_list_empty">Current history is empty</string>
 
     <!--about screen-->
     <string name="about_title">About</string>
@@ -31,12 +32,15 @@
     <string name="new_income">New income</string>
     <string name="income_amount" translatable="false">+ %.1f %s</string>
     <string name="outcome_amount" translatable="false">- %.1f %s</string>
+    <string name="empty_amount_message">Amount field should not be empty.</string>
 
     <!--add transaction screen-->
     <string name="hint_transaction_description">Description</string>
     <string name="hint_transaction_sum">0</string>
     <string name="add_transaction_title_wallet">Wallet</string>
     <string name="add_transaction_title_category">Category</string>
+    <string name="add_transaction_title_recurring_payment">Recurring payment</string>
+    <string name="add_transaction_title_recurring_payment_hint">Repeat payment after .. days</string>
 
     <!--add wallet screen-->
     <string name="text_new_wallet_header">Add wallet</string>
@@ -47,6 +51,14 @@
     <string name="save">SAVE</string>
     <string name="empty_name_message">Wallet name should not be empty.</string>
 
+    <!--edit wallet screen-->
+    <string name="edit_wallet_rename_and_delete">Rename or delete</string>
+    <string name="edit_wallet_select">Select wallet</string>
+    <string name="edit_wallet_delete">Delete</string>
+    <string name="hint_edit_wallet_name">New wallet name</string>
+    <string name="empty_fields_message">Rename or delete your wallet</string>
+
     <!--preferences-->
     <string name="pref_default_usd_rub_currency_rate">60</string>
+    <string name="pref_default_usd_eur_currency_rate">0.86</string>
 </resources>
