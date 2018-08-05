@@ -41,6 +41,9 @@
     <string name="add_transaction_title_wallet">Wallet</string>
     <string name="add_transaction_title_category">Category</string>
 
+    <!--wallet item screen-->
+    <string name="tv_custom_title">Default currency</string>
+
     <!--add wallet screen-->
     <string name="text_new_wallet_header">Add wallet</string>
     <string name="text_new_wallet_currency">Select currency</string>

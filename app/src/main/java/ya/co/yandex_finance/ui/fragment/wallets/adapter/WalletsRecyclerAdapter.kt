@@ -47,11 +47,11 @@ class WalletsRecyclerAdapter(private var list: List<Wallet>,
         holder.itemView.wallet_cardView.setBackgroundResource(getTabColor(position))
 
         if (position == 0) {
-            holder.customCurrency.visibility = View.VISIBLE
-            holder.customAmount.visibility = View.VISIBLE
-
+            holder.currency.visibility = View.INVISIBLE
+            holder.amount.visibility = View.INVISIBLE
             holder.customCurrency.text = customCurrency
-            holder.customAmount.text = convertedBalance.toString()
+            holder.customAmount.text = FORMAT_AMOUNT.format(convertedBalance)
+            holder.customTitle.visibility = View.VISIBLE
         }
     }
 
@@ -73,9 +73,14 @@ class WalletsRecyclerAdapter(private var list: List<Wallet>,
         val amount: TextView = itemView.wallet_amount
         val customCurrency: TextView = itemView.custom_currency
         val customAmount: TextView = itemView.custom_amount
+        val customTitle: TextView = itemView.tv_custom_title
 
         init {
             itemView.setOnClickListener { viewPager.currentItem = adapterPosition }
         }
+    }
+
+    companion object {
+        const val FORMAT_AMOUNT = "%.1f"
     }
 }

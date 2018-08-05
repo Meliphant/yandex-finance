@@ -99,7 +99,7 @@ dependencies {
 
     //Tests
     testImplementation "junit:junit:$junitVer"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVer"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVer"
-
 }

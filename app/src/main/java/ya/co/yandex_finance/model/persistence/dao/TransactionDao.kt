@@ -12,16 +12,16 @@ import ya.co.yandex_finance.model.entities.TransactionWithWallet
 @Dao
 interface TransactionDao {
 
-    @Query("SELECT * from transactions")
+    @Query("SELECT * from transactions ORDER BY tId DESC")
     fun getAllTransactions(): Flowable<List<Transaction>>
 
-    @Query("SELECT * from transactions WHERE walletId=:walletId")
+    @Query("SELECT * from transactions WHERE walletId=:walletId ORDER BY tId DESC")
     fun getAllForWallet(walletId: Int): Flowable<List<Transaction>>
 
-    @Query("SELECT tr.*, w.* from transactions tr inner join wallets w on tr.walletId = w.wId")
+    @Query("SELECT tr.*, w.* from transactions tr inner join wallets w on tr.walletId = w.wId ORDER BY tId DESC")
     fun getAllTransactionsWithWallet(): Flowable<List<TransactionWithWallet>>
 
-    @Query("SELECT tr.*, w.* from transactions tr inner join wallets w on tr.walletId = w.wId where walletId=:walletId")
+    @Query("SELECT tr.*, w.* from transactions tr inner join wallets w on tr.walletId = w.wId where walletId=:walletId ORDER BY tId DESC")
     fun getTransactionsWithWallet(walletId: Int): Flowable<List<TransactionWithWallet>>
 
     @Insert(onConflict = REPLACE)
