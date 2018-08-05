@@ -1,12 +1,9 @@
 package ya.co.yandex_finance.ui.fragment.editwallet
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.DialogFragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,10 +14,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.edit_wallet.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App
-import ya.co.yandex_finance.model.entities.Currency
 import ya.co.yandex_finance.model.entities.Wallet
-import ya.co.yandex_finance.model.entities.WalletTypes
-import ya.co.yandex_finance.ui.fragment.FragmentArguments
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsPresenter
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsView
 import javax.inject.Inject
@@ -63,7 +57,7 @@ class EditWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
         tv_cancel_edit.setOnClickListener { dismiss() }
         tv_save_edit.setOnClickListener {
 
-            val wallet = wallets.first { it.name == spinner_wallets_edit.selectedItem.toString()}
+            val wallet = wallets.first { it.name == spinner_wallets_edit.selectedItem.toString() }
             val walletName = et_wallet_name.text.toString()
             val walletStatus = cb_delete.isChecked
 
