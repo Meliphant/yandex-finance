@@ -90,14 +90,13 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
         val name = name.text.toString()
         val categoryId = spinner_category.selectedItemPosition
         val category = Categories.values()[categoryId]
-        val amount = et_amount.text.toString().trim()
+        val amount = tr_amount.text.toString().trim()
         val walletName = spinner_wallets_edit.selectedItem.toString()
         val wallet = walletList.first { it.name == walletName}
-        val recurrentPayment = et_recurring_payment.text.toString()
 
         if (!amount.isEmpty()) {
             val transaction = Transaction(0, name, amount.toDouble(), transactionType, category, wallet.wId, Date())
-            presenter.addTransaction(transaction)
+            presenter.addTransaction(transaction, wallet)
 
             dismiss()
         } else {

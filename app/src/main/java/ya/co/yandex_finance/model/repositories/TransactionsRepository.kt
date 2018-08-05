@@ -24,25 +24,4 @@ class TransactionsRepository(private val walletDatabase: WalletDatabase) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
     }
-
-    fun deleteAllTransactions() {
-        Completable.fromAction { walletDatabase.transactionDao().deleteAll() }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-    }
-
-    fun deleteTransactionById(id: Int) {
-        Completable.fromAction { walletDatabase.transactionDao().deleteById(id) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-    }
-
-    fun updateTransaction(transaction: Transaction) {
-        Completable.fromAction { walletDatabase.transactionDao().update(transaction) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-    }
 }

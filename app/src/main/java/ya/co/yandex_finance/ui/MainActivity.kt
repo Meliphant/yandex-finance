@@ -38,7 +38,7 @@ class MainActivity : MvpAppCompatActivity() {
                 showAboutDialog()
                 true
             }
-            android.R.id.home -> { //todo: working ugly because of viewHolder
+            android.R.id.home -> {
                 supportFragmentManager.beginTransaction()
                         .replace(R.id.fl_wallets, WalletsFragment())
                         .commitAllowingStateLoss()

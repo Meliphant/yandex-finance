@@ -60,7 +60,7 @@
                 tools:text="Transaction category" />
 
             <TextView
-                android:id="@+id/et_amount"
+                android:id="@+id/tr_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"

@@ -4,14 +4,18 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import ya.co.yandex_finance.model.calculations.BalanceCalculations
 import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.DataCurrencyRates
 import ya.co.yandex_finance.model.entities.Wallet
 import ya.co.yandex_finance.model.entities.WalletTypes
 import ya.co.yandex_finance.model.repositories.WalletsRepository
 import javax.inject.Inject
 
 @InjectViewState
-class WalletsPresenter @Inject constructor(private val walletsRepository: WalletsRepository)
+class WalletsPresenter
+@Inject constructor(private val walletsRepository: WalletsRepository,
+                    private val currencyRates: DataCurrencyRates)
     : MvpPresenter<WalletsView>() {
 
     fun updateWallet(wallet: Wallet) {
@@ -34,8 +38,9 @@ class WalletsPresenter @Inject constructor(private val walletsRepository: Wallet
     }
 
     private fun showWallets(wallets: List<Wallet>) {
-        val list = ArrayList(wallets)
-        list.add(0, Wallet(-1, "All wallets", Currency.USD, WalletTypes.CASH))
-        viewState.showWallets(list)
+        val allWallets = ArrayList(wallets)
+        val balance = BalanceCalculations.sumWalletsBalance(wallets, currencyRates)
+        allWallets.add(0, Wallet(-1, "All wallets", balance, Currency.USD, WalletTypes.CASH))
+        viewState.showWallets(allWallets)
     }
 }

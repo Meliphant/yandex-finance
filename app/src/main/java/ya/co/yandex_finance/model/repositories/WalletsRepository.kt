@@ -11,11 +11,6 @@ import ya.co.yandex_finance.model.persistence.WalletDatabase
 
 class WalletsRepository(private val walletDatabase: WalletDatabase) {
 
-    //get total money in a wallet
-    fun getAmount(walletId: Int): Flowable<List<Transaction>> {
-        return walletDatabase.transactionDao().getAllForWallet(walletId)
-    }
-
     fun getWallets(): Flowable<List<Wallet>> {
         return walletDatabase.walletDao().getAllWallets()
     }
@@ -26,13 +21,6 @@ class WalletsRepository(private val walletDatabase: WalletDatabase) {
 
     fun addWallet(wallet: Wallet) {
         Completable.fromAction { walletDatabase.walletDao().insert(wallet) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-    }
-
-    fun deleteAllWallets() {
-        Completable.fromAction { walletDatabase.walletDao().deleteAll() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()

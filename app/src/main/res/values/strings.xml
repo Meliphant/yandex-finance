@@ -16,6 +16,7 @@
     <string name="usd_balance_sign" translatable="false">$</string>
     <string name="rub_balance_sign" translatable="false">₽</string>
     <string name="settings_currency_key">currency</string>
+    <string name="settings_currency_default">USD</string>
     <string name="settings_wallets_key_edit">wallets_edit</string>
     <string name="settings_wallets_key_create">wallets_create</string>
     <string name="settings_currency_title">Currency</string>
@@ -39,8 +40,6 @@
     <string name="hint_transaction_sum">0</string>
     <string name="add_transaction_title_wallet">Wallet</string>
     <string name="add_transaction_title_category">Category</string>
-    <string name="add_transaction_title_recurring_payment">Recurring payment</string>
-    <string name="add_transaction_title_recurring_payment_hint">Repeat payment after .. days</string>
 
     <!--add wallet screen-->
     <string name="text_new_wallet_header">Add wallet</string>
@@ -59,6 +58,9 @@
     <string name="empty_fields_message">Rename or delete your wallet</string>
 
     <!--preferences-->
-    <string name="pref_default_usd_rub_currency_rate">60</string>
-    <string name="pref_default_usd_eur_currency_rate">0.86</string>
+    <string name="pref_currency_usd_rub_key">currency_usd_rub</string>
+    <string name="pref_currency_usd_rub_key_default">60</string>
+    <string name="pref_currency_usd_eur_key">currency_usd_eur</string>
+    <string name="pref_currency_usd_eur_key_default">0.86</string>
+    <string name="pref_currency_timestamp_key">currency_timestamp</string>
 </resources>

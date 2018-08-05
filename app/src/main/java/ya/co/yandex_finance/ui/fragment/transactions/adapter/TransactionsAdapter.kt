@@ -1,6 +1,7 @@
 package ya.co.yandex_finance.ui.fragment.transactions.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -81,6 +82,6 @@ class TransactionsAdapter(
         val trCategoryImg: ImageView = itemView.tr_category_img
         val trWalletImg: ImageView = itemView.wallet_img
         val trWalletName: TextView = itemView.wallet_name
-        val trAmount: TextView = itemView.et_amount
+        val trAmount: TextView = itemView.tr_amount
     }
 }

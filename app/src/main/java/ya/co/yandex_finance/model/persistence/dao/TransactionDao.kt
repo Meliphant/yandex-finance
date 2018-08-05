@@ -29,13 +29,4 @@ interface TransactionDao {
 
     @Insert(onConflict = REPLACE)
     fun insert(transactions: List<Transaction>)
-
-    @Query("DELETE from transactions")
-    fun deleteAll()
-
-    @Query("DELETE from transactions where tId=:id")
-    fun deleteById(id: Int)
-
-    @Update
-    fun update(transaction: Transaction)
 }

@@ -13,15 +13,14 @@ import kotlinx.android.synthetic.main.fragment_wallets.*
 import kotlinx.android.synthetic.main.fragment_wallets.view.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App
+import ya.co.yandex_finance.model.calculations.BalanceCalculations
 import ya.co.yandex_finance.model.entities.TransactionType
 import ya.co.yandex_finance.model.entities.Wallet
 import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
 import ya.co.yandex_finance.ui.fragment.wallets.adapter.WalletPagerAdapter
 import ya.co.yandex_finance.ui.fragment.wallets.adapter.WalletsRecyclerAdapter
+import ya.co.yandex_finance.util.PreferencesHelper
 import javax.inject.Inject
-
-//todo remove if custom fab hiding method not needed anymore
-const val FAB_SCROLL_THRESHOLD = 20
 
 class WalletsFragment : MvpAppCompatFragment(), WalletsView {
 
@@ -45,9 +44,13 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_wallets, container, false)
-        presenter.loadWallets()
         setupViews(rootView)
         return rootView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.loadWallets()
     }
 
     override fun onAttach(context: Context?) {
@@ -56,27 +59,19 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
     }
 
     override fun showWallets(wallets: List<Wallet>) {
-        walletsAdapeter = WalletsRecyclerAdapter(wallets, rootView.view_pager, listener)
+        val customCurrency = PreferencesHelper.getCustomCurrency(context!!)
+        val currencyRates = PreferencesHelper.getCurrencyRates(context!!)
+        val customBalance = BalanceCalculations
+                .convertWalletsBalance(wallets[0], currencyRates, customCurrency)
+
+        walletsAdapeter = WalletsRecyclerAdapter(wallets, customBalance, customCurrency,
+                rootView.view_pager, listener)
         rootView.view_pager.adapter = WalletPagerAdapter(wallets, childFragmentManager)
         rootView.recycler_tab_layout.setUpWithAdapter(walletsAdapeter)
 
     }
 
     private fun setupViews(rootView: View) {
-        //todo Remove?
-        //show or hide fab
-//        rootView.rv_list_transactions.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-//                if (dy > FAB_SCROLL_THRESHOLD && fab_menu.visibility == View.VISIBLE) {
-//                    fab_menu.collapse()
-//                    fab_menu.visibility = View.INVISIBLE
-//                    return
-//                }
-//                if (dy < -FAB_SCROLL_THRESHOLD && fab_menu.visibility != View.VISIBLE) {
-//                    fab_menu.visibility = View.VISIBLE
-//                }
-//            }
-//        })
 
         rootView.fab_new_income.setOnClickListener {
             openNewTransactionDialog(TransactionType.INCOME)

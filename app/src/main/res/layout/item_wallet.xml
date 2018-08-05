@@ -51,5 +51,29 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="#000"
             tools:text="1234" />
+
+        <TextView
+            android:id="@+id/custom_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/cardview_dark_background"
+            android:visibility="invisible"
+            tools:text="USD" />
+
+        <TextView
+            android:id="@+id/custom_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#000"
+            android:visibility="invisible"
+            tools:text="1234" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

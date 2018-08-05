@@ -1,6 +1,8 @@
 package ya.co.yandex_finance.app
 
 import android.app.Application
+import androidx.work.Constraints
+import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.facebook.stetho.Stetho
@@ -22,18 +24,12 @@ class App : Application() {
         lateinit var appComponent: AppComponent
     }
 
-    @Inject
-    lateinit var walletsRepository: WalletsRepository
-    @Inject
-    lateinit var transactionsRepository: TransactionsRepository
-
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent
                 .builder()
                 .appModule(AppModule(this))
                 .build()
-        appComponent.inject(this)
 
         startCurrencyWorker()
 
@@ -41,6 +37,10 @@ class App : Application() {
     }
 
     private fun startCurrencyWorker() {
+
+        val constraints = Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.UNMETERED)
+                .build()
 
         WorkManager.getInstance().getStatusesByTag(CurrencyWorker.TAG).observeForever {
             for (work in it!!) {
@@ -51,6 +51,7 @@ class App : Application() {
 
             val currencyWorker = PeriodicWorkRequest
                     .Builder(CurrencyWorker::class.java, 12, TimeUnit.HOURS)
+                    .setConstraints(constraints)
                     .addTag(CurrencyWorker.TAG)
                     .build()
 

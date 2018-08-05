@@ -26,7 +26,8 @@ abstract class WalletDatabase : RoomDatabase() {
 
     companion object {
 
-        @Volatile private var INSTANCE: WalletDatabase? = null
+        @Volatile
+        private var INSTANCE: WalletDatabase? = null
 
         fun getInstance(context: Context): WalletDatabase =
                 INSTANCE ?: synchronized(this) {
@@ -36,24 +37,18 @@ abstract class WalletDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
                 Room.databaseBuilder(context.applicationContext,
                         WalletDatabase::class.java, DATABASE_NAME)
-                        // prepopulate the database after onCreate was called
+                        //Prepopulate the database after onCreate was called
                         .addCallback(object : Callback() {
                             override fun onCreate(db: SupportSQLiteDatabase) {
                                 super.onCreate(db)
                                 Executors.newSingleThreadExecutor().execute {
-                                    getInstance(context).walletDao().insert(defaultWallets)
-                                    //todo remove
-                                    getInstance(context).transactionDao().insert(defaultTransactions)
+                                    val demoWallet = Wallet(0, "Demo", 0.0, Currency.USD, WalletTypes.CASH)
+                                    getInstance(context).walletDao().insert(demoWallet)
                                 }
                             }
                         })
                         .build()
 
-        val defaultWallets = arrayListOf<Wallet>()
-        val defaultTransactions = arrayListOf<Transaction>()
 
-        init {
-            defaultWallets.add(Wallet(0, "myRubWallet", Currency.RUB, WalletTypes.CASH))
-        }
     }
 }

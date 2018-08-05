@@ -9,7 +9,4 @@ class TransactionWithWallet {
 
     @Embedded
     lateinit var wallet: Wallet
-
-//    @Embedded
-//    lateinit var transactionRecurrent: TransactionRecurrent
 }

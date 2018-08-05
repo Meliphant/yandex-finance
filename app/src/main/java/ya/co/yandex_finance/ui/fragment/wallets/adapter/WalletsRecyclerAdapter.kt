@@ -12,7 +12,10 @@ import ya.co.yandex_finance.R
 import ya.co.yandex_finance.model.entities.Wallet
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsFragment
 
-class WalletsRecyclerAdapter(var list: List<Wallet>, private val myViewPager: ViewPager?,
+class WalletsRecyclerAdapter(private var list: List<Wallet>,
+                             private val convertedBalance: Double,
+                             private val customCurrency: String,
+                             myViewPager: ViewPager?,
                              private val listener: WalletsFragment.OnListFragmentInteractionListener?)
     : RecyclerTabLayout.Adapter<WalletsRecyclerAdapter.ViewHolder>(myViewPager) {
 
@@ -31,19 +34,30 @@ class WalletsRecyclerAdapter(var list: List<Wallet>, private val myViewPager: Vi
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount(): Int {
+        return list.size
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
 
         holder.name.text = item.name
         holder.currency.text = item.currency.toString()
-        //todo: add amount
-//        holder.amount.text = item.name
+        holder.amount.text = item.balance.toString()
         holder.itemView.wallet_cardView.setBackgroundResource(getTabColor(position))
+
+        if (position == 0) {
+            holder.customCurrency.visibility = View.VISIBLE
+            holder.customAmount.visibility = View.VISIBLE
+
+            holder.customCurrency.text = customCurrency
+            holder.customAmount.text = convertedBalance.toString()
+        }
     }
 
-    fun getCurrentWalletId() = list[currentIndicatorPosition].wId
+    fun getCurrentWalletId(): Int {
+        return list[currentIndicatorPosition].wId
+    }
 
     private fun getTabColor(position: Int): Int {
         return if (position == currentIndicatorPosition) {
@@ -57,6 +71,8 @@ class WalletsRecyclerAdapter(var list: List<Wallet>, private val myViewPager: Vi
         val name: TextView = itemView.wallet_name
         val currency: TextView = itemView.wallet_currency
         val amount: TextView = itemView.wallet_amount
+        val customCurrency: TextView = itemView.custom_currency
+        val customAmount: TextView = itemView.custom_amount
 
         init {
             itemView.setOnClickListener { viewPager.currentItem = adapterPosition }
