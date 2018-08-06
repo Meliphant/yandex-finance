@@ -11,10 +11,7 @@ import ya.co.yandex_finance.app.di.component.AppComponent
 import ya.co.yandex_finance.app.di.component.DaggerAppComponent
 import ya.co.yandex_finance.app.di.module.AppModule
 import ya.co.yandex_finance.model.network.CurrencyWorker
-import ya.co.yandex_finance.model.repositories.TransactionsRepository
-import ya.co.yandex_finance.model.repositories.WalletsRepository
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 class App : Application() {
 

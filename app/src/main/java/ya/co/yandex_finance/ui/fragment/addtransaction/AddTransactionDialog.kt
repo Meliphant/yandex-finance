@@ -64,7 +64,7 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
     override fun showWallets(list: List<Wallet>) {
         walletList = list
         val walletAdapter = ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,
+                android.R.layout.simple_spinner_dropdown_item,
                 walletList.map { it.name })
         walletAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_wallets_edit.adapter = walletAdapter
@@ -75,7 +75,7 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
 
         val categories = Categories.values().map { it.toString() }
         val categoriesAdapter = ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,
+                android.R.layout.simple_spinner_dropdown_item,
                 categories)
         spinner_category.adapter = categoriesAdapter
         spinner_category.setSelection(0)
@@ -92,13 +92,13 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
         val category = Categories.values()[categoryId]
         val amount = tr_amount.text.toString().trim()
         val walletName = spinner_wallets_edit.selectedItem.toString()
-        val wallet = walletList.first { it.name == walletName}
+        val wallet = walletList.first { it.name == walletName }
 
         if (!amount.isEmpty()) {
             val transaction = Transaction(0, name, amount.toDouble(), transactionType, category, wallet.wId, Date())
             presenter.addTransaction(transaction, wallet)
-
             dismiss()
+
         } else {
             showError(view!!)
         }

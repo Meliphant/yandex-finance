@@ -56,20 +56,13 @@ class AddWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
     private fun setupViews() {
 
         val currencies = Currency.values().map { it.toString() }
-        val currencyAdapter = ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,
-                currencies)
-        spinner_currency.adapter = currencyAdapter
-        spinner_currency.setSelection(0)
+        setUpAdapter(currencies)
 
         val walletType = WalletTypes.values().map { it.toString() }
-        val walletTypeAdapter = ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,
-                walletType)
-        spinner_wallet_type.adapter = walletTypeAdapter
-        spinner_wallet_type.setSelection(0)
+        setUpAdapter(walletType)
 
         tv_cancel.setOnClickListener { dismiss() }
+
         tv_save.setOnClickListener {
             val walletName = et_wallet_name.text.toString().trim()
             if (!walletName.isEmpty()) {
@@ -80,6 +73,14 @@ class AddWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
                 showWalletNameError(view!!)
             }
         }
+    }
+
+    private fun setUpAdapter(spinner: List<String>){
+        val spinnerAdapter = ArrayAdapter<String>(context,
+                android.R.layout.simple_spinner_dropdown_item,
+                spinner)
+        spinner_wallet_type.adapter = spinnerAdapter
+        spinner_wallet_type.setSelection(0)
     }
 
     override fun showWallets(wallets: List<Wallet>) {

@@ -39,7 +39,8 @@
         android:maxWidth="300dp"
         android:minWidth="150dp"
         android:paddingEnd="16dp"
-        android:paddingStart="16dp" />
+        android:paddingStart="16dp"
+        android:dropDownWidth="150dp"/>
 
     <TextView
         android:id="@+id/tv_category"
@@ -59,7 +60,8 @@
         android:maxWidth="250dp"
         android:minWidth="120dp"
         android:paddingEnd="16dp"
-        android:paddingStart="16dp" />
+        android:paddingStart="16dp"
+        android:dropDownWidth="150dp"/>
 
     <EditText
         android:id="@+id/name"

@@ -21,4 +21,30 @@
     <!--add transaction screen-->
     <string name="add_transaction_goal">Введите описание</string>
     <string name="add_transaction_btn">Добавить транзакцию</string>
+    <string name="title_transaction_list">ТРАНЗАКЦИИ</string>
+    <string name="title_transaction_list_empty">История пуста</string>
+    <string name="settings_currency_title">Валюта</string>
+    <string name="settings_wallets_title">Кошельки</string>
+    <string name="settings_wallets_title_edit">Редактировать кошелек</string>
+    <string name="settings_wallets_title_create">Создать новый кошелек</string>
+    <string name="settings_currency_summary">Выберите одну валюту по умолчанию</string>
+    <string name="settings_wallets_summary_edit">Управление текущими кошельками</string>
+    <string name="settings_wallets_summary_create">Создание нового кошелька</string>
+    <string name="empty_amount_message">Поле с суммой не должно быть пустым.</string>
+    <string name="hint_transaction_description">Описание</string>
+    <string name="add_transaction_title_wallet">Кошелек</string>
+    <string name="add_transaction_title_category">Категория</string>
+    <string name="tv_custom_title">Валюта по умолчанию</string>
+    <string name="text_new_wallet_header">Выберите кошелек</string>
+    <string name="text_new_wallet_currency">Выберите валюту</string>
+    <string name="text_new_wallet_type">Выберите тип валюты</string>
+    <string name="hint_wallet_name">Введите название кошелька</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="empty_name_message">Имя кошелька не должно быть пустым.</string>
+    <string name="edit_wallet_rename_and_delete">Переименовать или удалить</string>
+    <string name="edit_wallet_select">Выберите кошелек</string>
+    <string name="edit_wallet_delete">Удалить</string>
+    <string name="hint_edit_wallet_name">Новое название кошелька</string>
+    <string name="empty_fields_message">Переименуйте или удалите кошелек</string>
 </resources>

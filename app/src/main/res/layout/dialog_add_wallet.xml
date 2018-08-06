@@ -39,7 +39,7 @@
         android:id="@+id/spinner_currency"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"/>
 
     <TextView
         android:id="@+id/tv_wallet_type_label"
@@ -54,7 +54,8 @@
         android:id="@+id/spinner_wallet_type"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:dropDownWidth="150dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,5 +84,4 @@
             android:textColor="@color/colorAccent" />
 
     </LinearLayout>
-
 </LinearLayout>

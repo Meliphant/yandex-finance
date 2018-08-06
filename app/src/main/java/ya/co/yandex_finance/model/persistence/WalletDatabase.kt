@@ -7,11 +7,12 @@ import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import android.content.Context
 import ya.co.yandex_finance.app.App.Companion.DATABASE_NAME
-import ya.co.yandex_finance.model.entities.*
 import ya.co.yandex_finance.model.entities.Currency
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.entities.WalletTypes
 import ya.co.yandex_finance.model.persistence.dao.TransactionDao
 import ya.co.yandex_finance.model.persistence.dao.WalletDao
-import java.util.*
 import java.util.concurrent.Executors
 
 

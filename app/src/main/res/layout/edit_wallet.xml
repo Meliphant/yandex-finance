@@ -20,7 +20,8 @@
         android:id="@+id/spinner_wallets_edit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:dropDownWidth="150dp"/>
 
     <TextView
         android:id="@+id/tv_header_rename_and_delete"

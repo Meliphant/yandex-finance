@@ -78,5 +78,4 @@
         android:layout_marginStart="60dp"
         android:background="@android:color/darker_gray"
         android:layout_marginTop="119.5dp"/>
-
 </android.support.v7.widget.CardView>

@@ -1,7 +1,6 @@
 package ya.co.yandex_finance.ui.fragment.transactions.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -26,7 +25,8 @@ class TransactionsAdapter(
     : RecyclerView.Adapter<TransactionsAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
-    private val dateFormat = SimpleDateFormat("dd.MM HH:mm", Locale.ROOT)
+    private val dateFormat = SimpleDateFormat(context.getString(R.string.pattern_dateformat), Locale.ROOT)
+
     init {
         mOnClickListener = View.OnClickListener {
             val item = it.tag as Transaction
@@ -56,9 +56,10 @@ class TransactionsAdapter(
         holder.trDateTime.text = dateFormat.format(item.transaction.dateTime)
 
         when (item.transaction.type) {
-            TransactionType.INCOME -> setAmount(ContextCompat.getColor(context, R.color.transaction_text_income), item, holder, R.string.income_amount)
-            TransactionType.OUTCOME -> setAmount(ContextCompat.getColor(context, R.color.transaction_text_outcome), item, holder, R.string.outcome_amount)
-
+            TransactionType.INCOME -> setAmount(ContextCompat.getColor(context,
+                    R.color.transaction_text_income), item, holder, R.string.income_amount)
+            TransactionType.OUTCOME -> setAmount(ContextCompat.getColor(context,
+                    R.color.transaction_text_outcome), item, holder, R.string.outcome_amount)
         }
 
         holder.trWalletName.text = item.wallet.name
@@ -73,7 +74,8 @@ class TransactionsAdapter(
     }
 
     private fun getImage(context: Context, imageName: String): Int {
-        return context.resources.getIdentifier(imageName, "drawable", context.packageName)
+        return context.resources.getIdentifier(imageName, context.getString(R.string.pic_def_type),
+                context.packageName)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

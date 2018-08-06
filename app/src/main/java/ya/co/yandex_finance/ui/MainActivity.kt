@@ -1,17 +1,12 @@
 package ya.co.yandex_finance.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import com.arellomobile.mvp.MvpAppCompatActivity
-import kotlinx.android.synthetic.main.fragment_wallets.*
 import ya.co.yandex_finance.R
-import ya.co.yandex_finance.model.entities.TransactionType
-import ya.co.yandex_finance.ui.fragment.addtransaction.AddTransactionDialog
-import ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsFragment
 
 class MainActivity : MvpAppCompatActivity() {

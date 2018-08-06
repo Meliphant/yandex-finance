@@ -1,7 +1,6 @@
 package ya.co.yandex_finance.model.persistence.dao
 
 import android.arch.persistence.room.*
-import android.arch.persistence.room.Query
 import io.reactivex.Flowable
 import io.reactivex.Single
 import ya.co.yandex_finance.model.entities.Wallet

@@ -29,7 +29,7 @@ def constraintVer = '1.1.2'
 def roomVer = '1.1.1'
 def retrofit = '2.4.0'
 def rxjava = '2.1.8'
-def rxandroid = '2.0.1'
+def rxandroid = '2.0.2'
 def moxyVer = '1.5.5'
 def daggerVer = '2.12'
 def glideVer = '4.7.1'
@@ -60,6 +60,7 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:$roomVer"
     kapt "android.arch.persistence.room:compiler:$roomVer"
     implementation "android.arch.persistence.room:rxjava2:$roomVer"
+    annotationProcessor "android.arch.persistence.room:compiler:$roomVer"
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit"

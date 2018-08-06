@@ -3,7 +3,6 @@ package ya.co.yandex_finance.model.persistence.dao
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import android.arch.persistence.room.Update
 import android.arch.persistence.room.Query
 import io.reactivex.Flowable
 import ya.co.yandex_finance.model.entities.Transaction

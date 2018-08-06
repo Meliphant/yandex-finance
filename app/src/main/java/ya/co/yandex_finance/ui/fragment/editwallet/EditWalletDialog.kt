@@ -55,6 +55,7 @@ class EditWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
     private fun setupViews() {
 
         tv_cancel_edit.setOnClickListener { dismiss() }
+
         tv_save_edit.setOnClickListener {
 
             val wallet = wallets.first { it.name == spinner_wallets_edit.selectedItem.toString() }
@@ -76,7 +77,7 @@ class EditWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
         wallets = ArrayList(list)
         wallets.removeAt(0)
         val walletAdapter = ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,
+                android.R.layout.simple_spinner_dropdown_item,
                 wallets.map { it.name })
         walletAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_wallets_edit.adapter = walletAdapter
@@ -86,13 +87,11 @@ class EditWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
     private fun onUpdate(wallet: Wallet, name: String) {
         wallet.name = name
         presenter.updateWallet(wallet)
-
         dismiss()
     }
 
     private fun onDelete(wallet: Wallet) {
         presenter.deleteWallet(wallet)
-
         dismiss()
     }
 

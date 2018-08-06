@@ -9,7 +9,6 @@ import ya.co.yandex_finance.BuildConfig
 import ya.co.yandex_finance.model.network.CurrencyApi
 import ya.co.yandex_finance.model.network.CurrencyService
 import javax.inject.Singleton
-import kotlin.jvm.java
 
 @Module
 class NetworkModule {

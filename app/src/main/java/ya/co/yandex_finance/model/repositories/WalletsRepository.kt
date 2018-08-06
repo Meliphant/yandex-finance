@@ -5,7 +5,6 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import ya.co.yandex_finance.model.entities.Transaction
 import ya.co.yandex_finance.model.entities.Wallet
 import ya.co.yandex_finance.model.persistence.WalletDatabase
 

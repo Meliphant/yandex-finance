@@ -73,6 +73,6 @@ class TransactionsFragment : MvpAppCompatFragment(), TransactionsView {
                     arguments = Bundle().apply {
                         putInt(FragmentArguments.KEY_WALLET_ID.name, walletId)
                     }
-        }
+                }
     }
 }

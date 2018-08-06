@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="150dp"
             android:layout_marginTop="24dp"
             android:textSize="30sp"
             android:textColor="@color/cardview_dark_background"
@@ -72,6 +72,7 @@
             android:layout_below="@+id/wallet_amount"
             android:layout_marginEnd="-140dp"
             android:layout_toStartOf="@+id/wallet_currency"
+            android:textColor="@color/fab_text_background"
             android:textSize="30sp"
             tools:text="123" />
 
@@ -79,9 +80,9 @@
             android:id="@+id/custom_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/custom_amount"
+            android:layout_alignTop="@+id/custom_amount"
             android:layout_toEndOf="@+id/custom_amount"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="150dp"
             android:textSize="30sp"
             android:textColor="@color/cardview_dark_background"
             tools:text="USD" />

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fintracker</string>
+    <string name="app_name">FinTrack</string>
 
     <!--balance screen-->
     <string name="text_current_balance">Current balance:</string>
@@ -15,10 +15,10 @@
     <string name="settings_title">Settings</string>
     <string name="usd_balance_sign" translatable="false">$</string>
     <string name="rub_balance_sign" translatable="false">₽</string>
-    <string name="settings_currency_key">currency</string>
-    <string name="settings_currency_default">USD</string>
-    <string name="settings_wallets_key_edit">wallets_edit</string>
-    <string name="settings_wallets_key_create">wallets_create</string>
+    <string name="settings_currency_key" translatable="false">currency</string>
+    <string name="settings_currency_default" translatable="false">USD</string>
+    <string name="settings_wallets_key_edit" translatable="false">wallets_edit</string>
+    <string name="settings_wallets_key_create" translatable="false">wallets_create</string>
     <string name="settings_currency_title">Currency</string>
     <string name="settings_wallets_title">Wallets</string>
     <string name="settings_wallets_title_edit">Edit wallet</string>
@@ -31,13 +31,15 @@
     <string name="transaction_item_description">img</string>
     <string name="new_expense"> New expense</string>
     <string name="new_income">New income</string>
+    <string name="pic_def_type" translatable="false">drawable</string>
+    <string name="pattern_dateformat" translatable="false">dd.MM HH:mm</string>
     <string name="income_amount" translatable="false">+ %.1f %s</string>
     <string name="outcome_amount" translatable="false">- %.1f %s</string>
     <string name="empty_amount_message">Amount field should not be empty.</string>
 
     <!--add transaction screen-->
     <string name="hint_transaction_description">Description</string>
-    <string name="hint_transaction_sum">0</string>
+    <string name="hint_transaction_sum" translatable="false">0</string>
     <string name="add_transaction_title_wallet">Wallet</string>
     <string name="add_transaction_title_category">Category</string>
 
@@ -61,9 +63,9 @@
     <string name="empty_fields_message">Rename or delete your wallet</string>
 
     <!--preferences-->
-    <string name="pref_currency_usd_rub_key">currency_usd_rub</string>
-    <string name="pref_currency_usd_rub_key_default">60</string>
-    <string name="pref_currency_usd_eur_key">currency_usd_eur</string>
-    <string name="pref_currency_usd_eur_key_default">0.86</string>
-    <string name="pref_currency_timestamp_key">currency_timestamp</string>
+    <string name="pref_currency_usd_rub_key" translatable="false">currency_usd_rub</string>
+    <string name="pref_currency_usd_rub_key_default" translatable="false">60</string>
+    <string name="pref_currency_usd_eur_key" translatable="false">currency_usd_eur</string>
+    <string name="pref_currency_usd_eur_key_default" translatable="false">0.86</string>
+    <string name="pref_currency_timestamp_key" translatable="false">currency_timestamp</string>
 </resources>
