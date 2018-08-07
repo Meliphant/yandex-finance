@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".component.SettingsActivity">
-
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="196dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/ic_error_outline_black_24dp" />
-
-        <TextView
-            android:id="@+id/text_about_app"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/about_app"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="95dp"
-            tools:layout_editor_absoluteY="262dp" />
-
-    </android.support.v7.widget.LinearLayoutCompat>
-
-
-</android.support.constraint.ConstraintLayout>
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    tools:context=".ui.SettingsActivity"
+    android:theme="@style/AppTheme"/>

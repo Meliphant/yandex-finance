@@ -1,0 +1,29 @@
+package ya.co.yandex_finance.ui.fragment.addtransaction
+
+import com.arellomobile.mvp.InjectViewState
+import com.arellomobile.mvp.MvpPresenter
+import ya.co.yandex_finance.model.calculations.BalanceCalculations
+import ya.co.yandex_finance.model.entities.Transaction
+import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.model.repositories.TransactionsRepository
+import ya.co.yandex_finance.model.repositories.WalletsRepository
+import javax.inject.Inject
+
+@InjectViewState
+class AddTransactionPresenter
+@Inject constructor(private val transactionsRepository: TransactionsRepository,
+                    private val walletsRepository: WalletsRepository)
+    : MvpPresenter<AddTransactionView>() {
+
+    fun addTransaction(transaction: Transaction, wallet: Wallet) {
+        transactionsRepository.addTransaction(transaction)
+        val balance = BalanceCalculations.sumTransactionWithBalance(wallet.balance, transaction)
+        wallet.balance = balance
+        walletsRepository.updateWallet(wallet)
+    }
+
+    fun loadWallets() {
+        walletsRepository.getWallets()
+                .subscribe { viewState.showWallets(it) }
+    }
+}
