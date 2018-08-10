@@ -91,4 +91,6 @@
     <string name="recurrent_interval_hint">Интервал</string>
     <string name="title_amount">Сумма</string>
     <string name="title_description">Описание</string>
+    <string name="delete_title">Удалить шаблон</string>
+    <string name="delete_text">Вы уверены что хотите удалить шаблон?</string>
 </resources>

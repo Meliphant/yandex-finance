@@ -1,8 +1,10 @@
 package ya.co.yandex_finance.ui.fragment.recurrents
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.ActionBar
+import android.support.v7.app.AlertDialog
 import android.view.*
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatFragment
@@ -32,7 +34,7 @@ class RecurrentsFragment : MvpAppCompatFragment(), RecurrentView {
     private var listener: RecurrentsFragment.OnListFragmentInteractionListener = object
         : RecurrentsFragment.OnListFragmentInteractionListener {
         override fun onListFragmentInteraction(recurrentId: Int, type: String, walletId: Int) {
-            if (type == DELETE) presenter.deleteRecurrent(recurrentId)
+            if (type == DELETE) showCofirmDialog(recurrentId)
             else openEditRecurrentDialog(recurrentId, walletId)
         }
     }
@@ -84,6 +86,30 @@ class RecurrentsFragment : MvpAppCompatFragment(), RecurrentView {
                           recurrentsVisibility: Int = View.INVISIBLE) {
         rootView.tv_no_recurrent.visibility = emptyVisibility
         rootView.rv_list_recurrent.visibility = recurrentsVisibility
+    }
+
+    private fun showCofirmDialog(recurrentId: Int) {
+        val dialog = AlertDialog.Builder(context!!)
+                .setView(R.layout.dialog_delete_confirm)
+                .setTitle(R.string.delete_title)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    presenter.deleteRecurrent(recurrentId)
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel){ dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create();
+        dialog.show()
+        doKeepDialog(dialog)
+    }
+
+    private fun doKeepDialog(dialog: Dialog) {
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(dialog.window!!.attributes)
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window!!.attributes = lp
     }
 
     private fun openEditRecurrentDialog(recurrentId: Int, walletId: Int) {

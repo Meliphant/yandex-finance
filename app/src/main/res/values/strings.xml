@@ -31,6 +31,10 @@
     <string name="about_text">The app for managing your finances <b><i>Fintracker</i></b>.
         \n\nManage and monitor your cash flow in all currencies.</string>
 
+    <!--Delete screen-->
+    <string name="delete_title">Delete template</string>
+    <string name="delete_text">Are you sure you want to delete template?</string>
+
     <!--settings screen-->
     <string name="settings_title">Settings</string>
     <string name="settings_currency_key" translatable="false">currency</string>
