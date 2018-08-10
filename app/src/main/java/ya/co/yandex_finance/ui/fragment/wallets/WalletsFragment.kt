@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -23,7 +22,6 @@ import ya.co.yandex_finance.util.PreferencesHelper
 import javax.inject.Inject
 
 class WalletsFragment : MvpAppCompatFragment(), WalletsView {
-
     @Inject
     @InjectPresenter
     lateinit var presenter: WalletsPresenter
@@ -32,12 +30,12 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
     fun providePresenter() = presenter
 
     private lateinit var rootView: View
-    private lateinit var walletsAdapeter: WalletsRecyclerAdapter
+    private var walletsAdapter: WalletsRecyclerAdapter? = null
 
     private var listener: WalletsFragment.OnListFragmentInteractionListener? = object
         : WalletsFragment.OnListFragmentInteractionListener {
-        override fun onListFragmentInteraction(item: Wallet?) {
-            Toast.makeText(activity, "$item", Toast.LENGTH_SHORT).show()
+        override fun onListFragmentInteraction(position: Int) {
+            presenter.setPosition(position)
         }
     }
 
@@ -45,30 +43,30 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
                               savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_wallets, container, false)
         setupViews(rootView)
+        presenter.loadWallets()
         return rootView
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.loadWallets()
-    }
-
     override fun onAttach(context: Context?) {
-        super.onAttach(context)
         App.appComponent.inject(this)
+        super.onAttach(context)
     }
 
-    override fun showWallets(wallets: List<Wallet>) {
+    override fun showWallets(wallets: List<Wallet>, position: Int) {
         val customCurrency = PreferencesHelper.getCustomCurrency(context!!)
         val currencyRates = PreferencesHelper.getCurrencyRates(context!!)
         val customBalance = BalanceCalculations
                 .convertWalletsBalance(wallets[0], currencyRates, customCurrency)
 
-        walletsAdapeter = WalletsRecyclerAdapter(wallets, customBalance, customCurrency,
-                rootView.view_pager, listener)
-        rootView.view_pager.adapter = WalletPagerAdapter(wallets, childFragmentManager)
-        rootView.recycler_tab_layout.setUpWithAdapter(walletsAdapeter)
-
+        if (walletsAdapter?.getCount() == wallets.size) {
+            walletsAdapter?.updateData(wallets, customBalance, customCurrency)
+        } else {
+            walletsAdapter = WalletsRecyclerAdapter(wallets, customBalance, customCurrency,
+                    rootView.view_pager, listener)
+            rootView.view_pager.adapter = WalletPagerAdapter(wallets, childFragmentManager)
+            rootView.recycler_tab_layout.setUpWithAdapter(walletsAdapter)
+        }
+        rootView.recycler_tab_layout.setCurrentItem(position, false)
     }
 
     private fun setupViews(rootView: View) {
@@ -84,13 +82,17 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
 
     private fun openNewTransactionDialog(type: TransactionType) {
         fab_menu.collapse()
-        val walletId = walletsAdapeter.getCurrentWalletId()
-        val dialog = AddTransactionDialog.newInstance(walletId, type)
+        val walletId = walletsAdapter?.getCurrentWalletId()
+        val dialog = AddTransactionDialog.newInstance(walletId!!, type)
         val ft = fragmentManager?.beginTransaction()
         dialog.show(ft, AddTransactionDialog.TAG)
     }
 
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: Wallet?)
+        fun onListFragmentInteraction(position: Int)
+    }
+
+    companion object {
+        const val TAG = "WalletsFragment"
     }
 }

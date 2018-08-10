@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+
+    <TextView style="@style/DatePickerContainer.TextView" />
+
+    <view
+        style="@style/DatePickerContainer.View"
+        class="ya.co.yandex_finance.ui.fragment.transactions.DateRangePickerSpinner$CustomSpinner" />
+</merge>

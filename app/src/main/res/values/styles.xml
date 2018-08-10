@@ -1,21 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    <!--Drawer Layout-->
+    <style name="DrawerLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
-    <style name="menu_labels_style">
-        <item name="android:background">@drawable/fab_label_background</item>
-        <item name="android:textColor">@color/fab_text_color</item>
+    <!--Navigation View for Drawer Layout-->
+    <style name="NavigationView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:layout_gravity">start</item>
     </style>
 
-    <style name="TransactionDialog" parent="AppTheme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
+    <!--Toolbar-->
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <!--Date Picker Spinner-->
+    <style name="DatePickerContainer">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DatePickerContainer.TextView" parent="DatePicker">
+        <item name="android:layout_weight">4</item>
+    </style>
+
+    <style name="DatePickerContainer.View" parent="DatePicker">
+        <item name="android:layout_weight">7</item>
+    </style>
+
+    <style name="AlermDialogTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">#e8000000</item>
+    </style>
+
+    <!--Linear Layout vertical-->
+    <style name="LinearLayoutVertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--Linear Layout horizontal-->
+    <style name="LinearLayoutHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="LinearLayoutVerticalPadding" parent="LinearLayoutVertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="WrapContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WrapContentPadding" parent="WrapContent">
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="EditTextAmount">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="Large" parent="EditTextAmount">
+        <item name="android:textSize">60sp</item>
+    </style>
+
+    <style name="DialogTitles">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="DialogSpinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+    </style>
+
+    <style name="DialogEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">26dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="DialogEditTextNumber">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">26dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+
+    <style name="ManagerButtonGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="ButtonCancel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="ButtonSave">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="CheckBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="TextViewEmpty">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="Recycler">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="ListContainers">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+    </style>
+
+    <style name="DatePicker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FabChilds">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
+    <style name="FabMain">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+    </style>
+
+    <style name="ViewPager">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="RecyclerTabLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">170dp</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+    </style>
+
+    <style name="CollapsingToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/mainBackground</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="CollapsingAppBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/mainBackground</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="CoordinatorContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="CardViewVerticalContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">120dp</item>
+    </style>
+
+    <style name="ItemDate">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="ItemCategoryImage">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:contentDescription">@string/transaction_item_description</item>
+    </style>
+
+    <style name="ItemPeriod">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="ItemWalletType">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+    </style>
+
+    <style name="ItemWalletName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_toRightOf">@id/wallet_img</item>
+    </style>
+
+    <style name="ItemDescription">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@+id/wallet_name</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceListItem</item>
+    </style>
+
+    <style name="ItemAmount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAppearance">?attr/textAppearanceListItem</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ItemSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginStart">60dp</item>
+        <item name="android:layout_marginTop">119.5dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+    <style name="ItemEdit">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|bottom</item>
+        <item name="android:layout_marginEnd">60dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="ItemDelete">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|bottom</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">10dp</item>
     </style>
 </resources>

@@ -69,8 +69,10 @@ class TransactionsAdapter(
 
     private fun setAmount(color: Int, item: TransactionWithWallet, holder: ViewHolder, format: Int) {
         holder.trAmount.setTextColor(color)
+        val sign = holder.itemView.context
+                .getString(item.wallet.currency.signResourceId)
         holder.trAmount.text = holder.itemView.context
-                .getString(format, item.transaction.amount, item.wallet.currency.sign)
+                .getString(format, item.transaction.amount, sign)
     }
 
     private fun getImage(context: Context, imageName: String): Int {

@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">Финансы</string>
 
+    <!--categories-->
+    <string name="category_no">Нет категории</string>
+    <string name="category_travel">Путешествия</string>
+    <string name="category_restaurant">Ресторан</string>
+    <string name="category_groceries">Бакалея</string>
+    <string name="category_supermarkets">Супермаркет</string>
+    <string name="category_education">Образование</string>
+    <string name="category_clothes">Одежда</string>
+    <string name="category_entertainment">Развлечения</string>
+    <string name="category_transport">Транспорт</string>
+    <string name="category_health">Красота и здоровье</string>
+    <string name="category_media">Медиа</string>
+    <string name="category_other">Другое</string>
+
     <!--balance screen-->
     <string name="text_current_balance">Текущий баланс:</string>
 
@@ -12,17 +26,6 @@
 
     <!--settings screen-->
     <string name="settings_title">Настройки</string>
-
-    <!--transactions screen-->
-    <string name="transaction_item_description">категория</string>
-    <string name="new_expense">Новый расход</string>
-    <string name="new_income">Новый доход</string>
-
-    <!--add transaction screen-->
-    <string name="add_transaction_goal">Введите описание</string>
-    <string name="add_transaction_btn">Добавить транзакцию</string>
-    <string name="title_transaction_list">ТРАНЗАКЦИИ</string>
-    <string name="title_transaction_list_empty">История пуста</string>
     <string name="settings_currency_title">Валюта</string>
     <string name="settings_wallets_title">Кошельки</string>
     <string name="settings_wallets_title_edit">Редактировать кошелек</string>
@@ -30,11 +33,30 @@
     <string name="settings_currency_summary">Выберите одну валюту по умолчанию</string>
     <string name="settings_wallets_summary_edit">Управление текущими кошельками</string>
     <string name="settings_wallets_summary_create">Создание нового кошелька</string>
+    <string name="settings_currency_last_update">Валюты обновлены: %s</string>
+
+    <!--transactions screen-->
+    <string name="transaction_item_description">категория</string>
+    <string name="new_expense">Новый расход</string>
+    <string name="new_income">Новый доход</string>
+
+    <!--drawer screen-->
+    <string name="drawer_template_recurrent_title">Запланированные платежи</string>
+    <string name="drawer_template_edit">Изменить существующие платежи</string>
+
+    <!--add transaction screen-->
+    <string name="title_transaction_list">ТРАНЗАКЦИИ</string>
+    <string name="title_transaction_list_empty">История пуста</string>
     <string name="empty_amount_message">Поле с суммой не должно быть пустым.</string>
     <string name="hint_transaction_description">Описание</string>
     <string name="add_transaction_title_wallet">Кошелек</string>
     <string name="add_transaction_title_category">Категория</string>
+    <string name="add_transaction_title_recurrent">Повторять платеж каждые  ..  дней</string>
+
+    <!--wallet item screen-->
     <string name="tv_custom_title">Валюта по умолчанию</string>
+
+    <!--add wallet screen-->
     <string name="text_new_wallet_header">Выберите кошелек</string>
     <string name="text_new_wallet_currency">Выберите валюту</string>
     <string name="text_new_wallet_type">Выберите тип валюты</string>
@@ -42,9 +64,33 @@
     <string name="cancel">Отмена</string>
     <string name="save">Сохранить</string>
     <string name="empty_name_message">Имя кошелька не должно быть пустым.</string>
+
+    <!--edit wallet screen-->
     <string name="edit_wallet_rename_and_delete">Переименовать или удалить</string>
     <string name="edit_wallet_select">Выберите кошелек</string>
     <string name="edit_wallet_delete">Удалить</string>
     <string name="hint_edit_wallet_name">Новое название кошелька</string>
     <string name="empty_fields_message">Переименуйте или удалите кошелек</string>
+
+    <!--recurrents-->
+    <string name="recurrent_period">Период: %d дней</string>
+
+    <!--preferences-->
+    <string name="demo_wallet_name">Демо</string>
+    <string name="all_wallets_name">Все кошельки</string>
+    <string name="no_recurrent_payments">Нет запланированных платежей</string>
+    <string name="close_recurrent_list">Закрыть запланированные платежи</string>
+    <string name="title_transaction_filter">Фильтр</string>
+    <string name="drawer_template_recurrent_create">Создать новый</string>
+    <string name="drawer_template_recurrent_edit">Редактировать</string>
+    <string name="drawer_template_create">Создать новый</string>
+    <string name="drawer_template_transaction_title">Шаблоны</string>
+    <string name="last_payment">Последний платеж</string>
+    <string name="edit">Редактировать</string>
+    <string name="recurrent_empty_fields_message">Поля сумма, интервал и описание не должны быть пустыми</string>
+    <string name="recurrent_interval_hint">Интервал</string>
+    <string name="title_amount">Сумма</string>
+    <string name="title_description">Описание</string>
+    <string name="delete_title">Удалить шаблон</string>
+    <string name="delete_text">Вы уверены что хотите удалить шаблон?</string>
 </resources>

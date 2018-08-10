@@ -14,10 +14,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.dialog_add_transaction.*
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.app.App
-import ya.co.yandex_finance.model.entities.Categories
-import ya.co.yandex_finance.model.entities.Transaction
-import ya.co.yandex_finance.model.entities.TransactionType
-import ya.co.yandex_finance.model.entities.Wallet
+import ya.co.yandex_finance.app.App.Companion.ALL_WALLETS_ID
+import ya.co.yandex_finance.model.entities.*
 import ya.co.yandex_finance.ui.fragment.FragmentArguments
 import java.util.*
 import javax.inject.Inject
@@ -31,7 +29,7 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
     @ProvidePresenter
     fun provideAddTransactionPresenter() = presenter
 
-    private var walletId: Int = -1
+    private var walletId: Int = ALL_WALLETS_ID
     private lateinit var walletList: List<Wallet>
     private var transactionType = TransactionType.INCOME
 
@@ -57,8 +55,8 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
     }
 
     override fun onAttach(context: Context?) {
-        super.onAttach(context)
         App.appComponent.inject(this)
+        super.onAttach(context)
     }
 
     override fun showWallets(list: List<Wallet>) {
@@ -67,13 +65,15 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
                 android.R.layout.simple_spinner_dropdown_item,
                 walletList.map { it.name })
         walletAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner_wallets_edit.adapter = walletAdapter
-        spinner_wallets_edit.setSelection(walletList.indexOf(walletList.find { it.wId == walletId }))
+        spinner_wallets_recurrent.adapter = walletAdapter
+        spinner_wallets_recurrent.setSelection(walletList.indexOf(walletList.find { it.wId == walletId }))
     }
 
     private fun setupViews() {
 
-        val categories = Categories.values().map { it.toString() }
+        val categories = Categories.values().map {
+            activity!!.getString(it.titleId)
+        }
         val categoriesAdapter = ArrayAdapter<String>(context,
                 android.R.layout.simple_spinner_dropdown_item,
                 categories)
@@ -91,14 +91,26 @@ class AddTransactionDialog : MvpAppCompatDialogFragment(), AddTransactionView {
         val categoryId = spinner_category.selectedItemPosition
         val category = Categories.values()[categoryId]
         val amount = tr_amount.text.toString().trim()
-        val walletName = spinner_wallets_edit.selectedItem.toString()
+        val walletName = spinner_wallets_recurrent.selectedItem.toString()
         val wallet = walletList.first { it.name == walletName }
 
-        if (!amount.isEmpty()) {
-            val transaction = Transaction(0, name, amount.toDouble(), transactionType, category, wallet.wId, Date())
-            presenter.addTransaction(transaction, wallet)
-            dismiss()
+        val recurrentVal =
+                if (!recurrent.text.isEmpty())
+                    recurrent.text.toString().trim().toInt()
+                else 0
 
+        if (!amount.isEmpty()) {
+            val transactionDate = Date()
+            val transaction = Transaction(0, name, amount.toDouble(), transactionType,
+                    category, wallet.wId, transactionDate)
+            presenter.addTransaction(transaction, wallet)
+
+            if (recurrentVal != 0) {
+                val recurrentTr = TransactionRecurrent(0, name, amount.toDouble(), transactionType,
+                        category, wallet.wId, transactionDate, recurrentVal, transactionDate)
+                presenter.addTransactionRecurrent(recurrentTr)
+            }
+            dismiss()
         } else {
             showError(view!!)
         }

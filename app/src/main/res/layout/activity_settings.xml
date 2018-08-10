@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fr_settings"
+    android:name="ya.co.yandex_finance.ui.fragment.SettingsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal"
-    tools:context=".ui.SettingsActivity"
-    android:theme="@style/AppTheme"/>
+    android:layout_height="wrap_content" />

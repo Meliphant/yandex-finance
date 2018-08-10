@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp">
+    style="@style/ListContainers">
 
-    <TextView
-        android:id="@+id/tv_list_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp"
-        android:text="@string/title_transaction_list"
-        android:textSize="18sp" />
+    <ya.co.yandex_finance.ui.fragment.transactions.DateRangePickerSpinner
+        android:id="@+id/tv_list_filter"
+        app:spinnerText="@string/title_transaction_filter"
+        style="@style/DatePicker" />
 
     <TextView
         android:id="@+id/tv_no_transactions"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="55dp"
-        android:gravity="center"
-        android:text="@string/title_transaction_list_empty"
-        android:visibility="gone"
-        android:textSize="18sp" />
+        style="@style/TextViewEmpty"
+        android:text="@string/title_transaction_list_empty" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list_transactions"
         android:name="ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tv_list_title"
+        style="@style/Recycler"
+        android:layout_below="@+id/tv_list_filter"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:context=".ui.fragment.transactions.TransactionsFragment"
         tools:listitem="@layout/item_transaction" />
 </RelativeLayout>

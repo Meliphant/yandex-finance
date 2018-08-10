@@ -2,23 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
         android:id="@+id/settings_currency"
+        android:defaultValue="@string/settings_currency_default"
         android:key="@string/settings_currency_key"
         android:summary="@string/settings_currency_summary"
         android:title="@string/settings_currency_title" />
-    <PreferenceCategory
-        android:key="pref_key_storage_settings"
-        android:title="@string/settings_wallets_title">
 
-        <Preference
-            android:id="@+id/settings_wallets_edit"
-            android:key="@string/settings_wallets_key_edit"
-            android:summary="@string/settings_wallets_summary_edit"
-            android:title="@string/settings_wallets_title_edit" />
-
-        <Preference
-            android:id="@+id/settings_wallets_create"
-            android:key="@string/settings_wallets_key_create"
-            android:summary="@string/settings_wallets_summary_create"
-            android:title="@string/settings_wallets_title_create" />
-    </PreferenceCategory>
+    <Preference
+        android:id="@+id/settings_currency_update"
+        android:selectable="false"
+        android:enabled="true"
+        android:key="@string/settings_currency_last_update_key"/>
 </PreferenceScreen>

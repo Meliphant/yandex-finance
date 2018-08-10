@@ -2,86 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rv_account"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:background="@color/colorPrimary">
+    style="@style/LinearLayoutVerticalPadding">
 
     <TextView
         android:id="@+id/tv_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/darker_gray"
+        style="@style/DialogTitles"
         android:text="@string/text_new_wallet_header" />
 
     <EditText
         android:id="@+id/et_wallet_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/DialogEditText"
         android:hint="@string/hint_wallet_name"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="20sp"
-        tools:text="Wallet name"/>
+        tools:text="Wallet name" />
 
     <TextView
         android:id="@+id/tv_currency_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/text_new_wallet_currency"
-        android:textColor="@android:color/darker_gray"
-        android:textStyle="bold" />
+        style="@style/DialogTitles"
+        android:text="@string/text_new_wallet_currency" />
 
     <Spinner
         android:id="@+id/spinner_currency"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"/>
+        style="@style/DialogSpinner" />
 
     <TextView
         android:id="@+id/tv_wallet_type_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/text_new_wallet_type"
-        android:textColor="@android:color/darker_gray"
-        android:textStyle="bold" />
+        style="@style/DialogTitles"
+        android:text="@string/text_new_wallet_type" />
 
     <Spinner
         android:id="@+id/spinner_wallet_type"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
-        android:dropDownWidth="150dp"/>
+        style="@style/DialogSpinner" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/ManagerButtonGroup">
 
         <TextView
             android:id="@+id/tv_cancel"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/cancel"
-            android:textColor="@color/colorAccent" />
+            style="@style/ButtonCancel"
+            android:text="@string/cancel" />
 
         <TextView
             android:id="@+id/tv_save"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/save"
-            android:textColor="@color/colorAccent" />
+            style="@style/ButtonSave"
+            android:text="@string/save" />
 
     </LinearLayout>
 </LinearLayout>

@@ -4,5 +4,6 @@ enum class FragmentArguments {
     KEY_WALLET_ID,
     KEY_TRANSACTION_TYPE,
     KEY_CURRENCY,
-    KEY_WALLET_TYPE
+    KEY_WALLET_TYPE,
+    KEY_RECURRENT_ID
 }

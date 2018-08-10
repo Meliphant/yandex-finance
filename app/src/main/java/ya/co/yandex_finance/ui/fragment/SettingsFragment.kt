@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.support.v7.preference.ListPreference
 import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
-import android.util.Log
 import ya.co.yandex_finance.R
 import ya.co.yandex_finance.model.entities.Currency
-import ya.co.yandex_finance.ui.fragment.addwallet.AddWalletDialog
-import ya.co.yandex_finance.ui.fragment.editwallet.EditWalletDialog
+import ya.co.yandex_finance.util.PreferencesHelper
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SettingsFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -20,17 +20,14 @@ class SettingsFragment : PreferenceFragmentCompat(),
         val listPreferenceCurrency: Preference = findPreference(getString(R.string.settings_currency_key))
         setListPreferenceCurrency(listPreferenceCurrency)
 
-        val listPreferenceWalletsEdit: Preference = findPreference(getString(R.string.settings_wallets_key_edit))
-        listPreferenceWalletsEdit.setOnPreferenceClickListener {
-            navigateEditWalletDialog()
-            true
-        }
+        setCurrencyLastUpdate()
+    }
 
-        val preferenceWalletsCreate = findPreference(getString(R.string.settings_wallets_key_create))
-        preferenceWalletsCreate.setOnPreferenceClickListener {
-            navigateAddWalletDialog()
-            true
-        }
+    private fun setCurrencyLastUpdate() {
+        val currencyLastUpdateView: Preference = findPreference(getString(R.string.settings_currency_last_update_key))
+        val currencyRates = PreferencesHelper.getCurrencyRates(activity!!)
+        val lastUpdate = currencyFormat.format(Date(currencyRates.timestamp * MILLIS))
+        currencyLastUpdateView.title = getString(R.string.settings_currency_last_update, lastUpdate)
     }
 
     private fun setListPreferenceCurrency(listPreference: Preference) {
@@ -43,18 +40,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
             listPreference.entryValues = entries
             listPreference.setDialogTitle(R.string.settings_currency_title)
         }
-    }
-
-    private fun navigateEditWalletDialog() {
-        val dialog = EditWalletDialog()
-        val ft = fragmentManager?.beginTransaction()
-        dialog.show(ft, EditWalletDialog.TAG)
-    }
-
-    private fun navigateAddWalletDialog() {
-        val dialog = AddWalletDialog()
-        val ft = fragmentManager?.beginTransaction()
-        dialog.show(ft, AddWalletDialog.TAG)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
@@ -74,5 +59,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     companion object {
         const val DEFAULT_VALUE = "1"
+        const val MILLIS = 1000
+        private val currencyFormat = SimpleDateFormat("d MMM", Locale.getDefault())
     }
 }

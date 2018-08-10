@@ -1,19 +1,19 @@
 package ya.co.yandex_finance.model.entities
 
-enum class Categories(val title: String, val iconUrl: String) {
+import ya.co.yandex_finance.R
 
-    NOCATEGORY("No category", "category_no"),
-    TRAVEL("Travel", "category_travel"),
-    RESTAURANTS("Restaurant", "category_restaurants"),
-    GROCERIES("Groceries", "category_groceries"),
-    SUPERMARKETS("Supermarkets", "category_groceries"),
-    EDUCATION("Education", "category_education"),
-    CLOTHES("Clothes", "category_clothes"),
-    ENTERTAINMENT("Entertainment", "category_entertainment"),
-    TRANSPORT("Transport", "category_transport"),
-    HEALTH("Health and beauty", "category_health"),
-    MEDIA("Media", "category_media"),
-    OTHER("Other", "category_other");
+enum class Categories(val titleId: Int, val iconUrl: String) {
 
-    override fun toString() = title
+    NOCATEGORY(R.string.category_no, "category_no"),
+    TRAVEL(R.string.category_travel, "category_travel"),
+    RESTAURANTS(R.string.category_restaurant, "category_restaurants"),
+    GROCERIES(R.string.category_groceries, "category_groceries"),
+    SUPERMARKETS(R.string.category_supermarkets, "category_groceries"),
+    EDUCATION(R.string.category_education, "category_education"),
+    CLOTHES(R.string.category_clothes, "category_clothes"),
+    ENTERTAINMENT(R.string.category_entertainment, "category_entertainment"),
+    TRANSPORT(R.string.category_transport, "category_transport"),
+    HEALTH(R.string.category_health, "category_health"),
+    MEDIA(R.string.category_media, "category_media"),
+    OTHER(R.string.category_other, "category_other");
 }

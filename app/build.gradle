@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'WalletKey'
+            keyPassword 'WalletKey'
+            storeFile file('C:/Users/Meliphant/AndroidStudioProjects/signedKeys/keyFinanceTracker.jks')
+            storePassword 'WalletKey'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "ya.co.yandex_finance"
@@ -14,12 +22,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         buildConfigField 'String', "CURRENCY_HOST", currency_host
+        buildConfigField 'String', "CURRENCY_PATH", currency_path
         buildConfigField 'String', "CURRENCY_API_KEY", currency_api_key
+        buildConfigField 'String', "CURRENCY_SYMBOLS", currency_symbols
+        buildConfigField 'String', "DATABSE_NAME", database_name
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -40,11 +52,12 @@ def junitVer = '4.12'
 def testRunnerVer = '1.0.2'
 def espressoVer = '3.0.2'
 def takisoft = "$supportVer.0"
-def workerVer = "1.0.0-alpha06"
+def workerVer = "1.0.0-alpha04"
 def stethoVer = "1.5.0"
+def dateRangePicker = "2.1"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:preference-v14:$supportVer"
     implementation "com.android.support:appcompat-v7:$supportVer"
@@ -92,6 +105,9 @@ dependencies {
     //FAB menu
     implementation "com.getbase:floatingactionbutton:$fabVer"
 
+    //Date Range Picker
+    implementation "com.github.VenkatramanRajagopalan:DateRangePicker:$dateRangePicker"
+
     //Worker
     implementation "android.arch.work:work-runtime:$workerVer"
 
@@ -102,5 +118,7 @@ dependencies {
     testImplementation "junit:junit:$junitVer"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVer"
+    androidTestImplementation "com.android.support.test:rules:$testRunnerVer"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVer"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVer"
 }
