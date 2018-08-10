@@ -12,11 +12,11 @@ android {
             storePassword 'WalletKey'
         }
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "ya.co.yandex_finance"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,13 +30,15 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
     }
 }
 
-def supportVer = '27.1.1'
+def supportVer = '28.0.0-beta01'
 def constraintVer = '1.1.2'
 def roomVer = '1.1.1'
 def retrofit = '2.4.0'
@@ -51,7 +53,6 @@ def fabVer = '1.10.1'
 def junitVer = '4.12'
 def testRunnerVer = '1.0.2'
 def espressoVer = '3.0.2'
-def takisoft = "$supportVer.0"
 def workerVer = "1.0.0-alpha04"
 def stethoVer = "1.5.0"
 def dateRangePicker = "2.1"
@@ -67,7 +68,6 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$supportVer"
     implementation "com.android.support:cardview-v7:$supportVer"
     implementation "com.android.support.constraint:constraint-layout:$constraintVer"
-    implementation "com.takisoft.fix:preference-v7:$takisoft"
 
     //Room
     implementation "android.arch.persistence.room:runtime:$roomVer"
