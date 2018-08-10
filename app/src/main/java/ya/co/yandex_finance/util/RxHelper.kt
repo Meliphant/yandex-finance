@@ -22,4 +22,3 @@ fun <T> applySchedulers(): FlowableTransformer<T, T> {
                 .observeOn(AndroidSchedulers.mainThread())
     }
 }
-

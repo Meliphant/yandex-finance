@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'WalletKey'
+            keyPassword 'WalletKey'
+            storeFile file('C:/Users/Meliphant/AndroidStudioProjects/signedKeys/keyFinanceTracker.jks')
+            storePassword 'WalletKey'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "ya.co.yandex_finance"
@@ -23,6 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -48,7 +57,7 @@ def stethoVer = "1.5.0"
 def dateRangePicker = "2.1"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:preference-v14:$supportVer"
     implementation "com.android.support:appcompat-v7:$supportVer"

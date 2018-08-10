@@ -36,32 +36,6 @@ class TransactionsRepository(private val walletDatabase: WalletDatabase,
         )
     }
 
-    fun addTransactionAsRecurrent(transactionRecurrent: TransactionRecurrent) {
-        val transaction = Transaction(0,
-                transactionRecurrent.description,
-                transactionRecurrent.amount,
-                transactionRecurrent.type,
-                transactionRecurrent.category,
-                transactionRecurrent.walletId,
-                transactionRecurrent.dateTime)
-
-        if (subscription.isDisposed) subscription.dispose()
-
-        subscription.add(
-                Completable.fromAction { walletDatabase.transactionDao().insert(transaction) }
-                        .compose(applySchedulers(subscribeScheduler, observeScheduler))
-                        .subscribe()
-        )
-    }
-
-    fun getTransactionsWithPeriod(dateTimeStart: Date, dateTimeEnd: Date): Flowable<List<Transaction>> {
-        return walletDatabase.transactionDao().getTransactionsWithPeriod(dateTimeStart, dateTimeEnd)
-    }
-
-    fun getTransactionsWithPeriodForWallet(dateTimeStart: Date, dateTimeEnd: Date, walletId: Int): Flowable<List<Transaction>> {
-        return walletDatabase.transactionDao().getTransactionsWithPeriodForWallet(dateTimeStart, dateTimeEnd, walletId)
-    }
-
     fun getTransactionsWithPeriodWithWalletInfo(dateTimeStart: Date, dateTimeEnd: Date): Flowable<List<TransactionWithWallet>> {
         return walletDatabase.transactionDao().getTransactionsWithPeriodWithWalletInfo(dateTimeStart, dateTimeEnd)
     }
