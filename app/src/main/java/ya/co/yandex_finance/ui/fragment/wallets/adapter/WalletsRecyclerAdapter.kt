@@ -13,20 +13,11 @@ import ya.co.yandex_finance.model.entities.Wallet
 import ya.co.yandex_finance.ui.fragment.wallets.WalletsFragment
 
 class WalletsRecyclerAdapter(private var list: List<Wallet>,
-                             private val convertedBalance: Double,
-                             private val customCurrency: String,
+                             private var convertedBalance: Double,
+                             private var customCurrency: String,
                              myViewPager: ViewPager?,
                              private val listener: WalletsFragment.OnListFragmentInteractionListener?)
     : RecyclerTabLayout.Adapter<WalletsRecyclerAdapter.ViewHolder>(myViewPager) {
-
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener {
-            val item = it.tag as Wallet
-            listener?.onListFragmentInteraction(item)
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -48,15 +39,24 @@ class WalletsRecyclerAdapter(private var list: List<Wallet>,
 
         if (position == 0) {
             holder.currency.visibility = View.INVISIBLE
-            holder.amount.visibility = View.INVISIBLE
+            holder.amount.visibility = View.GONE
             holder.customCurrency.text = customCurrency
             holder.customAmount.text = FORMAT_AMOUNT.format(convertedBalance)
             holder.customTitle.visibility = View.VISIBLE
         }
     }
 
-    fun getCurrentWalletId(): Int {
-        return list[currentIndicatorPosition].wId
+    fun getCurrentWalletId(): Int = list[currentIndicatorPosition].wId
+
+    fun getCount(): Int = list.size
+
+    fun updateData(wallets: List<Wallet>,
+                   convertedBalance: Double,
+                   customCurrency: String) {
+        this.convertedBalance = convertedBalance
+        this.customCurrency = customCurrency
+        this.list = wallets
+        notifyDataSetChanged()
     }
 
     private fun getTabColor(position: Int): Int {
@@ -76,7 +76,10 @@ class WalletsRecyclerAdapter(private var list: List<Wallet>,
         val customTitle: TextView = itemView.tv_custom_title
 
         init {
-            itemView.setOnClickListener { viewPager.currentItem = adapterPosition }
+            itemView.setOnClickListener {
+                viewPager.currentItem = adapterPosition
+                listener?.onListFragmentInteraction(adapterPosition)
+            }
         }
     }
 

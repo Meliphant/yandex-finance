@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.arellomobile.mvp.MvpAppCompatDialogFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -49,17 +50,17 @@ class AddWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
     }
 
     override fun onAttach(context: Context?) {
-        super.onAttach(context)
         appComponent.inject(this)
+        super.onAttach(context)
     }
 
     private fun setupViews() {
 
         val currencies = Currency.values().map { it.toString() }
-        setUpAdapter(currencies)
+        setUpAdapter(currencies, spinner_currency)
 
         val walletType = WalletTypes.values().map { it.toString() }
-        setUpAdapter(walletType)
+        setUpAdapter(walletType,spinner_wallet_type)
 
         tv_cancel.setOnClickListener { dismiss() }
 
@@ -75,15 +76,15 @@ class AddWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
         }
     }
 
-    private fun setUpAdapter(spinner: List<String>){
+    private fun setUpAdapter(spinnerList: List<String>, spinner: Spinner){
         val spinnerAdapter = ArrayAdapter<String>(context,
                 android.R.layout.simple_spinner_dropdown_item,
-                spinner)
-        spinner_wallet_type.adapter = spinnerAdapter
-        spinner_wallet_type.setSelection(0)
+                spinnerList)
+        spinner.adapter = spinnerAdapter
+        spinner.setSelection(0)
     }
 
-    override fun showWallets(wallets: List<Wallet>) {
+    override fun showWallets(wallets: List<Wallet>, position: Int) {
     }
 
     private fun onSaveClicked(walletName: String, currency: Currency, wallet_type: WalletTypes) {

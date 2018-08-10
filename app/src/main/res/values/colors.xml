@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0097a3</color>
-    <color name="colorPrimaryDark">#636363</color>
-    <color name="colorAccent">#E9574B</color>
+    <color name="colorPrimary">#3075bf</color>
+    <color name="colorPrimaryDark">#d6000000</color>
+    <color name="colorAccent">#ff0000</color>
 
-    <color name="mainBackground">#ffffff</color>
+    <color name="mainBackground">#a1a1a1</color>
 
     <!--fab text-->
     <color name="fab_text_color">#eaffffff</color>
     <color name="fab_text_background">#d6000000</color>
 
-    <color name="tab_background_selected">#C8F0EF</color>
-    <color name="tab_background_unselected">#C9C6C4</color>
+    <color name="tab_background_selected">#ffcd03</color>
+    <color name="tab_background_unselected">#ffe991</color>
 
     <!--transaction amount-->
-    <color name="transaction_text_income">#0097a3</color>
-    <color name="transaction_text_outcome">#FF4081</color>
+    <color name="transaction_text_income">#3075bf</color>
+    <color name="transaction_text_outcome">#ff0000</color>
 </resources>

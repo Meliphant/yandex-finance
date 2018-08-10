@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="ya.co.yandex_finance.app.App"
         android:allowBackup="true"
@@ -15,7 +16,10 @@
 
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name">
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

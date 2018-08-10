@@ -14,7 +14,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         buildConfigField 'String', "CURRENCY_HOST", currency_host
+        buildConfigField 'String', "CURRENCY_PATH", currency_path
         buildConfigField 'String', "CURRENCY_API_KEY", currency_api_key
+        buildConfigField 'String', "CURRENCY_SYMBOLS", currency_symbols
+        buildConfigField 'String', "DATABSE_NAME", database_name
     }
     buildTypes {
         release {
@@ -40,8 +43,9 @@ def junitVer = '4.12'
 def testRunnerVer = '1.0.2'
 def espressoVer = '3.0.2'
 def takisoft = "$supportVer.0"
-def workerVer = "1.0.0-alpha06"
+def workerVer = "1.0.0-alpha04"
 def stethoVer = "1.5.0"
+def dateRangePicker = "2.1"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -92,6 +96,9 @@ dependencies {
     //FAB menu
     implementation "com.getbase:floatingactionbutton:$fabVer"
 
+    //Date Range Picker
+    implementation "com.github.VenkatramanRajagopalan:DateRangePicker:$dateRangePicker"
+
     //Worker
     implementation "android.arch.work:work-runtime:$workerVer"
 
@@ -102,5 +109,7 @@ dependencies {
     testImplementation "junit:junit:$junitVer"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVer"
+    androidTestImplementation "com.android.support.test:rules:$testRunnerVer"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVer"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVer"
 }

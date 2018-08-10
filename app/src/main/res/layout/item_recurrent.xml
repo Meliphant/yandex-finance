@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardViewVerticalContainer">
+
+    <TextView
+        android:id="@+id/tr_datetime"
+        style="@style/ItemDate"
+        tools:text="last payment 19.09  15:03" />
+
+    <TextView
+        android:id="@+id/tr_period"
+        style="@style/ItemPeriod"
+        tools:text="Period: 2 days" />
+
+    <LinearLayout style="@style/LinearLayoutHorizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/tr_category_img"
+            style="@style/ItemCategoryImage"
+            app:civ_border_color="@color/cardview_dark_background"
+            app:civ_border_width="2dp"
+            app:srcCompat="@drawable/category_restaurants" />
+
+
+        <RelativeLayout style="@style/WrapContent">
+
+            <ImageView
+                android:id="@+id/wallet_img"
+                style="@style/ItemWalletType"
+                app:srcCompat="@drawable/wallet_card" />
+
+            <TextView
+                android:id="@+id/wallet_name"
+                style="@style/ItemWalletName"
+                tools:text="Bill Tiltle" />
+
+            <TextView
+                android:id="@+id/tr_name"
+                style="@style/ItemDescription"
+                tools:text="Transaction category" />
+
+            <TextView
+                android:id="@+id/tr_amount"
+                style="@style/ItemAmount"
+                tools:text="+ 1234 ₽" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/tr_edit"
+        style="@style/ItemEdit"
+        android:src="@drawable/ic_edit" />
+
+    <ImageView
+        android:id="@+id/tr_delete"
+        style="@style/ItemDelete"
+        android:src="@drawable/ic_delete" />
+
+    <View style="@style/ItemSeparator" />
+</android.support.v7.widget.CardView>

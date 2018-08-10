@@ -1,102 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".ui.fragment.addtransaction.AddTransactionDialog">
 
-    <EditText
-        android:id="@+id/tr_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/hint_transaction_sum"
-        android:inputType="number"
-        android:maxLines="1"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="70sp"
-        tools:text="0" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/LinearLayoutVerticalPadding"
+        tools:context=".ui.fragment.addtransaction.AddTransactionDialog">
 
-    <TextView
-        android:id="@+id/tv_wallets"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:text="@string/add_transaction_title_wallet"
-        android:textColor="@android:color/darker_gray" />
-
-    <Spinner
-        android:id="@+id/spinner_wallets_edit"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:maxWidth="300dp"
-        android:minWidth="150dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:dropDownWidth="150dp"/>
-
-    <TextView
-        android:id="@+id/tv_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:text="@string/add_transaction_title_category"
-        android:textColor="@android:color/darker_gray" />
-
-    <Spinner
-        android:id="@+id/spinner_category"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:maxWidth="250dp"
-        android:minWidth="120dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:dropDownWidth="150dp"/>
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:hint="@string/hint_transaction_description"
-        android:inputType="text"
-        android:maxLines="2" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/tr_amount"
+            style="@style/Large"
+            android:hint="@string/hint_transaction_sum"
+            tools:text="0" />
 
         <TextView
-            android:id="@+id/tv_cancel"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/cancel"
-            android:textColor="@color/colorAccent" />
+            android:id="@+id/tv_wallets"
+            style="@style/DialogTitles"
+            android:text="@string/add_transaction_title_wallet" />
+
+        <Spinner
+            android:id="@+id/spinner_wallets_recurrent"
+            style="@style/DialogSpinner" />
 
         <TextView
-            android:id="@+id/tv_save"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/save"
-            android:textColor="@color/colorAccent" />
+            android:id="@+id/tv_category"
+            style="@style/DialogTitles"
+            android:text="@string/add_transaction_title_category" />
 
+        <Spinner
+            android:id="@+id/spinner_category"
+            style="@style/DialogSpinner" />
+
+        <EditText
+            android:id="@+id/name"
+            style="@style/DialogEditText"
+            android:hint="@string/hint_transaction_description" />
+
+        <EditText
+            android:id="@+id/recurrent"
+            style="@style/DialogEditTextNumber"
+            android:hint="@string/add_transaction_title_recurrent" />
+
+        <LinearLayout style="@style/ManagerButtonGroup">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/ButtonCancel"
+                android:text="@string/cancel" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                style="@style/ButtonSave"
+                android:text="@string/save" />
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

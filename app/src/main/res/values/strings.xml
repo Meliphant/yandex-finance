@@ -1,9 +1,29 @@
 <resources>
-    <string name="app_name">FinTrack</string>
+    <string name="app_name">Finance Tracker</string>
+
+    <!--balance signs-->
+    <string name="usd_balance_sign" translatable="false">$</string>
+    <string name="rub_balance_sign" translatable="false">₽</string>
+    <string name="eur_balance_sign" translatable="false">€</string>
+
+    <!--categories-->
+    <string name="category_no">No category</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_restaurant">Restaurant</string>
+    <string name="category_groceries">Groceries</string>
+    <string name="category_supermarkets">Supermarkets</string>
+    <string name="category_education">Education</string>
+    <string name="category_clothes">Clothes</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_health">Health and beauty</string>
+    <string name="category_media">Media</string>
+    <string name="category_other">Other</string>
 
     <!--balance screen-->
     <string name="text_current_balance">Current balance:</string>
     <string name="title_transaction_list">TRANSACTIONS</string>
+    <string name="title_transaction_filter">Filter</string>
     <string name="title_transaction_list_empty">Current history is empty</string>
 
     <!--about screen-->
@@ -13,25 +33,34 @@
 
     <!--settings screen-->
     <string name="settings_title">Settings</string>
-    <string name="usd_balance_sign" translatable="false">$</string>
-    <string name="rub_balance_sign" translatable="false">₽</string>
     <string name="settings_currency_key" translatable="false">currency</string>
     <string name="settings_currency_default" translatable="false">USD</string>
     <string name="settings_wallets_key_edit" translatable="false">wallets_edit</string>
     <string name="settings_wallets_key_create" translatable="false">wallets_create</string>
     <string name="settings_currency_title">Currency</string>
     <string name="settings_wallets_title">Wallets</string>
-    <string name="settings_wallets_title_edit">Edit wallet</string>
+    <string name="settings_wallets_title_edit">Manage existing wallets</string>
     <string name="settings_wallets_title_create">Create new wallet</string>
     <string name="settings_currency_summary">Select one custom currency</string>
     <string name="settings_wallets_summary_edit">Click to manage your current wallets</string>
     <string name="settings_wallets_summary_create">Click to create new wallet</string>
+    <string name="settings_currency_last_update_key" translatable="false">settings_currency_last_update</string>
+    <string name="settings_currency_last_update">Currency updated: %s</string>
+
+    <!--drawer screen-->
+    <string name="drawer_template_recurrent_create">Create new repeat payment</string>
+    <string name="drawer_template_recurrent_edit">Edit existing repeat payment</string>
+    <string name="drawer_template_transaction_title">Templates</string>
+    <string name="drawer_template_recurrent_title">Repeat payment</string>
+    <string name="drawer_template_create">Create new</string>
+    <string name="drawer_template_edit">Manage existing payments</string>
 
     <!--transactions screen-->
     <string name="transaction_item_description">img</string>
     <string name="new_expense"> New expense</string>
     <string name="new_income">New income</string>
     <string name="pic_def_type" translatable="false">drawable</string>
+    <string name="category_title_def_type" translatable="false">string</string>
     <string name="pattern_dateformat" translatable="false">dd.MM HH:mm</string>
     <string name="income_amount" translatable="false">+ %.1f %s</string>
     <string name="outcome_amount" translatable="false">- %.1f %s</string>
@@ -42,6 +71,12 @@
     <string name="hint_transaction_sum" translatable="false">0</string>
     <string name="add_transaction_title_wallet">Wallet</string>
     <string name="add_transaction_title_category">Category</string>
+    <string name="add_transaction_title_recurrent">Repeat payment in  ..  days if needed</string>
+
+    <!--recurrent manager screen-->
+    <string name="recurrent_interval_hint">Repeat interval</string>
+    <string name="title_description">Description</string>
+    <string name="title_amount">Amount</string>
 
     <!--wallet item screen-->
     <string name="tv_custom_title">Default currency</string>
@@ -62,10 +97,23 @@
     <string name="hint_edit_wallet_name">New wallet name</string>
     <string name="empty_fields_message">Rename or delete your wallet</string>
 
+    <!--recurrents-->
+    <string name="recurrent_period">Period: %d days</string>
+    <string name="edit">Edit</string>
+    <string name="last_payment">Last payment: </string>
+    <string name="recurrent_empty_fields_message">Amount, interval and description should not be empty</string>
+
     <!--preferences-->
+    <string name="pref_currency_usd" translatable="false">USD</string>
+    <string name="pref_currency_rub" translatable="false">RUB</string>
+    <string name="pref_currency_eur" translatable="false">EUR</string>
     <string name="pref_currency_usd_rub_key" translatable="false">currency_usd_rub</string>
     <string name="pref_currency_usd_rub_key_default" translatable="false">60</string>
     <string name="pref_currency_usd_eur_key" translatable="false">currency_usd_eur</string>
     <string name="pref_currency_usd_eur_key_default" translatable="false">0.86</string>
     <string name="pref_currency_timestamp_key" translatable="false">currency_timestamp</string>
+    <string name="demo_wallet_name">Demo</string>
+    <string name="all_wallets_name">All wallets</string>
+    <string name="no_recurrent_payments">No recurrent payments</string>
+    <string name="close_recurrent_list">Close recurrent list</string>
 </resources>
