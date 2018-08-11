@@ -39,7 +39,7 @@ class App : Application() {
     private fun startCurrencyWorker() {
 
         val constraints = Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.METERED)
+                .setRequiredNetworkType(NetworkType.UNMETERED)
                 .build()
 
         WorkManager.getInstance()?.getStatusesByTag(CurrencyWorker.TAG)?.observeForever {

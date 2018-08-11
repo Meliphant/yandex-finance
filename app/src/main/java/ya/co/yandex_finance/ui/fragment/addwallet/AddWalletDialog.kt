@@ -84,7 +84,7 @@ class AddWalletDialog : MvpAppCompatDialogFragment(), WalletsView {
         spinner.setSelection(0)
     }
 
-    override fun showWallets(wallets: List<Wallet>, position: Int) {
+    override fun showWallets(list: List<Wallet>, position: Int) {
     }
 
     private fun onSaveClicked(walletName: String, currency: Currency, wallet_type: WalletTypes) {

@@ -50,6 +50,6 @@ class AddTransactionAndAddedOnRecyclerTest {
         val recyclerView = mActivityTestRule.activity
                 .findViewById(R.id.rv_list_transactions) as RecyclerView
 
-        return recyclerView.adapter.itemCount
+        return recyclerView.adapter!!.itemCount
     }
 }

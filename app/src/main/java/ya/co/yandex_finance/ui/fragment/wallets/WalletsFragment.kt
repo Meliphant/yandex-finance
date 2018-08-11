@@ -52,18 +52,18 @@ class WalletsFragment : MvpAppCompatFragment(), WalletsView {
         super.onAttach(context)
     }
 
-    override fun showWallets(wallets: List<Wallet>, position: Int) {
+    override fun showWallets(list: List<Wallet>, position: Int) {
         val customCurrency = PreferencesHelper.getCustomCurrency(context!!)
         val currencyRates = PreferencesHelper.getCurrencyRates(context!!)
         val customBalance = BalanceCalculations
-                .convertWalletsBalance(wallets[0], currencyRates, customCurrency)
+                .convertWalletsBalance(list[0], currencyRates, customCurrency)
 
-        if (walletsAdapter?.getCount() == wallets.size) {
-            walletsAdapter?.updateData(wallets, customBalance, customCurrency)
+        if (walletsAdapter?.getCount() == list.size) {
+            walletsAdapter?.updateData(list, customBalance, customCurrency)
         } else {
-            walletsAdapter = WalletsRecyclerAdapter(wallets, customBalance, customCurrency,
+            walletsAdapter = WalletsRecyclerAdapter(list, customBalance, customCurrency,
                     rootView.view_pager, listener)
-            rootView.view_pager.adapter = WalletPagerAdapter(wallets, childFragmentManager)
+            rootView.view_pager.adapter = WalletPagerAdapter(list, childFragmentManager)
             rootView.recycler_tab_layout.setUpWithAdapter(walletsAdapter)
         }
         rootView.recycler_tab_layout.setCurrentItem(position, false)

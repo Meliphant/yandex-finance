@@ -78,7 +78,7 @@ class MainActivity : MvpAppCompatActivity() {
         supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fl_wallets, WalletsFragment(), WalletsFragment.TAG)
-                .commit()
+                .commitAllowingStateLoss()
     }
 
     private fun startSettings() {
@@ -141,7 +141,7 @@ class MainActivity : MvpAppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == RC_SETTINGS && resultCode == 21) {
+        if (requestCode == RC_SETTINGS) {
             replaceWallets()
         }
     }
