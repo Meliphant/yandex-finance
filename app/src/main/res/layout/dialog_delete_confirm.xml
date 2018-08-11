@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WrapContentPadding"
+    android:orientation="vertical">
+    <TextView
+        style="@style/AlermDialogTextView"
+        android:text="@string/delete_text" />
+</android.support.v7.widget.LinearLayoutCompat>

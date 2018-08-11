@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_wallets"
+    style="@style/CoordinatorContainer"
+    tools:context=".ui.fragment.wallets.WalletsFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        style="@style/CollapsingAppBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            style="@style/CollapsingToolbar"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
+
+            <com.nshmura.recyclertablayout.RecyclerTabLayout
+                android:id="@+id/recycler_tab_layout"
+                style="@style/RecyclerTabLayout"
+                app:tabGravity="center"
+                app:tabMode="scrollable"
+                tools:listitem="@layout/item_wallet" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <ya.co.yandex_finance.ui.fragment.wallets.NonSwipeableViewPager
+        android:id="@+id/view_pager"
+        style="@style/ViewPager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu"
+        style="@style/FabMain"
+        fab:fab_colorNormal="@color/colorAccent"
+        fab:fab_colorPressed="@color/colorPrimary"
+        fab:fab_icon="@drawable/fab_add"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:layout_constraintBottom_toBottomOf="@+id/rv_list_transactions"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintHorizontal_bias="0.966"
+        fab:layout_constraintStart_toStartOf="parent"
+        fab:layout_constraintTop_toTopOf="@+id/rv_list_transactions"
+        fab:layout_constraintVertical_bias="1.0">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_new_income"
+            style="@style/FabChilds"
+            android:theme="@style/AppTheme"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_icon="@drawable/fab_add"
+            app:fab_size="mini"
+            app:fab_title="@string/new_income" />
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_new_expense"
+            style="@style/FabChilds"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_icon="@drawable/fab_minus"
+            app:fab_size="mini"
+            app:fab_title="@string/new_expense" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</android.support.design.widget.CoordinatorLayout>

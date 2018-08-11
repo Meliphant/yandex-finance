@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ListContainers">
+
+    <ya.co.yandex_finance.ui.fragment.transactions.DateRangePickerSpinner
+        android:id="@+id/tv_list_filter"
+        app:spinnerText="@string/title_transaction_filter"
+        style="@style/DatePicker" />
+
+    <TextView
+        android:id="@+id/tv_no_transactions"
+        style="@style/TextViewEmpty"
+        android:text="@string/title_transaction_list_empty" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_list_transactions"
+        android:name="ya.co.yandex_finance.ui.fragment.transactions.TransactionsFragment"
+        style="@style/Recycler"
+        android:layout_below="@+id/tv_list_filter"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_transaction" />
+</RelativeLayout>

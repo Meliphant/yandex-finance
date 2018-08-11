@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.addtransaction.AddTransactionDialog">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/LinearLayoutVerticalPadding"
+        tools:context=".ui.fragment.addtransaction.AddTransactionDialog">
+
+        <EditText
+            android:id="@+id/tr_amount"
+            style="@style/Large"
+            android:hint="@string/hint_transaction_sum"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/tv_wallets"
+            style="@style/DialogTitles"
+            android:text="@string/add_transaction_title_wallet" />
+
+        <Spinner
+            android:id="@+id/spinner_wallets_recurrent"
+            style="@style/DialogSpinner" />
+
+        <TextView
+            android:id="@+id/tv_category"
+            style="@style/DialogTitles"
+            android:text="@string/add_transaction_title_category" />
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            style="@style/DialogSpinner" />
+
+        <EditText
+            android:id="@+id/name"
+            style="@style/DialogEditText"
+            android:hint="@string/hint_transaction_description" />
+
+        <EditText
+            android:id="@+id/recurrent"
+            style="@style/DialogEditTextNumber"
+            android:hint="@string/add_transaction_title_recurrent" />
+
+        <LinearLayout style="@style/ManagerButtonGroup">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/ButtonCancel"
+                android:text="@string/cancel" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                style="@style/ButtonSave"
+                android:text="@string/save" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

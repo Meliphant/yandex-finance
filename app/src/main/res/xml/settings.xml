@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:id="@+id/settings_currency"
+        android:defaultValue="@string/settings_currency_default"
+        android:key="@string/settings_currency_key"
+        android:summary="@string/settings_currency_summary"
+        android:title="@string/settings_currency_title" />
+
+    <Preference
+        android:id="@+id/settings_currency_update"
+        android:selectable="false"
+        android:enabled="true"
+        android:key="@string/settings_currency_last_update_key"/>
+</PreferenceScreen>

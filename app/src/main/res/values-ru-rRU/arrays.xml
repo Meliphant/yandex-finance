@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="date_picker_categories">
+        <item>Сегодня</item>
+        <item>Эта неделя</item>
+        <item>Этот месяц</item>
+        <item>Выбрать</item>
+    </string-array>
+</resources>

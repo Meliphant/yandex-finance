@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rv_account"
+    style="@style/LinearLayoutVerticalPadding">
+
+    <TextView
+        android:id="@+id/tv_header"
+        style="@style/DialogTitles"
+        android:text="@string/text_new_wallet_header" />
+
+    <EditText
+        android:id="@+id/et_wallet_name"
+        style="@style/DialogEditText"
+        android:hint="@string/hint_wallet_name"
+        tools:text="Wallet name" />
+
+    <TextView
+        android:id="@+id/tv_currency_label"
+        style="@style/DialogTitles"
+        android:text="@string/text_new_wallet_currency" />
+
+    <Spinner
+        android:id="@+id/spinner_currency"
+        style="@style/DialogSpinner" />
+
+    <TextView
+        android:id="@+id/tv_wallet_type_label"
+        style="@style/DialogTitles"
+        android:text="@string/text_new_wallet_type" />
+
+    <Spinner
+        android:id="@+id/spinner_wallet_type"
+        style="@style/DialogSpinner" />
+
+    <LinearLayout style="@style/ManagerButtonGroup">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/ButtonCancel"
+            android:text="@string/cancel" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            style="@style/ButtonSave"
+            android:text="@string/save" />
+
+    </LinearLayout>
+</LinearLayout>
